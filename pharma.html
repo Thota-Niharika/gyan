@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gyantrix Academy - Home</title>
+  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="../headerfooter/footerstyle.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <section class="trending-section">
+  <h2>Trending on Gyantrix</h2>
+  <p>Organizations across the globe trust our learners and their exceptional skills in domains such as</p>
+
+  <div class="courses-container">
+    
+    <!-- Pharma -->
+    <div class="course-card" data-category="pharma">
+      <img src="../public/images/medicalcoding.jpg" alt="Medical Coding">
+      <h3>Medical Coding</h3>
+      <p>Medical Coding is the process of translating healthcare diagnoses, procedures, and treatments into standardized codes for records and billing.</p>
+      <span>₹14,999</span>
+
+      <div class="card-buttons">
+    <a href="./courses/medicalCoding.html" class="know-more-btn">Know More</a>
+    <a href="contact.html" class="payment-btn">Enroll</a>
+  </div>
+    </div>
+
+    <div class="course-card" data-category="pharma">
+      <img src="../public/images/medicalscribing.jpg" alt="Medical Scribing">
+      <h3>Medical Scribing</h3>
+      <p>Medical Scribing involves documenting patient encounters and clinical information on behalf of healthcare providers.</p>
+      <span>₹14,999</span>
+
+      <div class="card-buttons">
+    <a href="./courses/medicalscribing.html" class="know-more-btn">Know More</a>
+    <a href="contact.html" class="payment-btn">Enroll</a>
+  </div>
+    </div>
+
+    <div class="course-card" data-category="pharma">
+      <img src="../public/images/geneticeng.jpg" alt="Genetic Engineering">
+      <h3>Genetic Engineering</h3>
+      <p>Genetic Engineering involves modifying an organism's DNA to achieve desired traits or outcomes.</p>
+      <span>₹14,999</span>
+
+      <div class="card-buttons">
+    <a href="./courses/geneticeng.html" class="know-more-btn">Know More</a>
+    <a href="contact.html" class="payment-btn">Enroll</a>
+  </div>
+    </div>
+
+    <div class="course-card" data-category="pharma">
+      <img src="../public/images/pharmaco-vigilance.jpg" alt="Pharmacovigilance">
+      <h3>Pharmacovigilance</h3>
+      <p>Pharmacovigilance is the science of monitoring and ensuring the safety of medicines.</p>
+      <span>₹14,999</span>
+
+      <div class="card-buttons">
+    <a href="./courses/pharmacovigilance.html" class="know-more-btn">Know More</a>
+    <a href="contact.html" class="payment-btn">Enroll</a>
+  </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer"></div>
+
+  <script src="navbar.js"></script>
+  <script src="./headerfooter/include.js"></script>
+  <script>
+    const topBar = document.getElementById("topBar");
+  const mainNav = document.getElementById("mainNav");
+
+  const topBarHeight = topBar.offsetHeight;
+  let lastScrollTop = 0;
+  let isTopHidden = false;
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // SCROLLING DOWN
+    if (scrollTop > lastScrollTop) {
+      if (scrollTop > topBarHeight && !isTopHidden) {
+        topBar.classList.add("hidden");
+        mainNav.classList.add("fixed");
+        isTopHidden = true;
+      }
+    }
+    // SCROLLING UP
+    else {
+      if (scrollTop <= 0) {
+        topBar.classList.remove("hidden");
+        mainNav.classList.remove("fixed");
+        isTopHidden = false;
+      }
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+  </script>
+</body>
+</html>
