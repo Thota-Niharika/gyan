@@ -15,10 +15,11 @@ html, body {
 
 
 body {
-  background: url("public/images/background.png") no-repeat center center/cover;
+  /* background: url("public/images/background.png") no-repeat center center/cover;
+  background-attachment: fixed; */
+  background: linear-gradient(90deg, #0A1030, #111C44);
   background-attachment: fixed;
   font-family: 'Poppins', sans-serif;
-
   color: #333;
   line-height: 1.6;
   padding-top: 1.5rem;
@@ -234,7 +235,6 @@ body {
 
   .site-header .hamburger {
     display: block !important;
-    background: #ffc107;
     border: none;
     color: #0c2d57;
     font-size: 2rem;
@@ -339,7 +339,8 @@ body {
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 1rem;
-  color: goldenrod;
+  /* color: goldenrod; */
+  color: #66D6FF;
 }
 
 .hero-content h3 {
@@ -349,20 +350,19 @@ body {
 }
 
 .highlight {
-  color: #00fefe;
+  color: #7B2CFF;
   font-weight: 600;
 }
 
 
 .hero-content p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1rem;
   color: #fff;
   text-align: justify;
 }
 #com_name{
   font-weight: 1.3rem;
-  font-weight: 600;
+  font-weight: 550;
   margin-bottom: 0.8rem;
 }
 .company-logos {
@@ -820,11 +820,12 @@ form button {
     color: red;
 }
 .highlightbtn{
-  color: goldenrod;
+  color: #007A86;
   font-size: 1.3rem;
+  font-weight: 520;
 }
 .hgbtn{
-  color: goldenrod;
+  color: #007A86;
   font-size: 1.1rem;
 }
 .infosection {
@@ -842,7 +843,6 @@ form button {
       height: 3rem;
       overflow: hidden;
       text-transform: uppercase;
-      /* letter-spacing: 2px; */
       text-align: center;
       color: #fff;
       margin-top: 3rem;
@@ -859,7 +859,7 @@ form button {
       width: 100%;
       opacity: 0;
       /* background: linear-gradient(90deg, #8324f8, #f544ae, #048cb9); */
-      background-color: rgb(255, 191, 0);
+      background-color: #66D6FF;
       color: #fff;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -1357,7 +1357,7 @@ form button {
 .offer-card {
   padding: 1rem;
   border-radius: 0.6rem;
-  box-shadow: 0 0 0.6rem rgba(0,0,0,0.1);
+  box-shadow: 0 0 0.6rem rgba(93, 206, 178, 0.1);
   backdrop-filter: blur(0.625rem);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
@@ -1365,7 +1365,7 @@ form button {
 
 .offer-card:hover{
   transform: translateY(-0.3125rem);
-  box-shadow: 0 0.625rem 1.25rem rgba(0,0,0,0.2);
+  box-shadow: 0 0.625rem 1.25rem rgba(243, 20, 225, 0.2);
   background-color: #e2dcf9;
 }
 
@@ -1394,7 +1394,7 @@ form button {
 .trending-section h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: goldenrod;
+  color: #66D6FF;
 }
 
 .trending-section p {

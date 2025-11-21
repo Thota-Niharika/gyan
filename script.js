@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         // --- 4️⃣ Send data to backend ---
-        const response = await fetch("http://192.168.0.168:8090/api/leads", {
+        const response = await fetch("https://gyantrix-academy-backend-1.onrender.com/api/leads", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
