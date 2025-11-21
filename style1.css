@@ -17,13 +17,25 @@ html, body {
 body {
   /* background: url("public/images/background.png") no-repeat center center/cover;
   background-attachment: fixed; */
-  background: linear-gradient(90deg, #0A1030, #111C44);
+  /* background: linear-gradient(90deg, #0A1030, #111C44); */
+  background: transparent !important;
   background-attachment: fixed;
   font-family: 'Poppins', sans-serif;
   color: #333;
   line-height: 1.6;
   padding-top: 1.5rem;
 }
+#sparkleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;          /* Behind all content */
+    pointer-events: none; /* Allow clicks through */
+    background-color: #05051A;
+}
+
 
 @media(max-width:768px){
   body{

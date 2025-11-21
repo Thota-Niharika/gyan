@@ -9,6 +9,7 @@
   
 </head>
 <body>
+  <canvas id="sparkleCanvas"></canvas>
 <div id="header"></div>
 
   <!-- Hero Section -->
@@ -1283,6 +1284,93 @@ Q850 500 950 300"
 <script src="script.js"></script>
 <script src="navbar.js"></script>
 <script src="./headerfooter/include.js"></script>
+
+<script>
+const canvas = document.getElementById('sparkleCanvas');
+const ctx = canvas.getContext('2d');
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+let particles = [];
+let maxParticles = 500; 
+
+function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+    constructor(x, y, isBurst = false) {
+        this.x = x;
+        this.y = y;
+        this.radius = Math.random() * 1.5 + 0.5;
+        this.alpha = 1;
+        this.friction = 0.98;
+        this.isBurst = isBurst;
+
+        const colors = ["255,255,255","173,216,230","255,223,0"];
+        this.color = colors[Math.floor(Math.random()*colors.length)];
+
+        this.velocity = isBurst
+        ? { x:(Math.random()-0.5)*6, y:(Math.random()-0.5)*6 }
+        : { x:(Math.random()-0.5)*0.2, y:(Math.random()-0.5)*0.2 };
+
+        this.decayRate = isBurst ? 0.03 : 0;
+        if(isBurst) this.radius = Math.random()*0.7 + 0.1;
+    }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false);
+        ctx.fillStyle=`rgba(${this.color},${this.alpha})`;
+        ctx.fill();
+        ctx.restore();
+    }
+    update() {
+        if(this.isBurst){
+            this.velocity.x*=this.friction;
+            this.velocity.y*=this.friction;
+            this.alpha-=this.decayRate;
+        }
+        this.x+=this.velocity.x;
+        this.y+=this.velocity.y;
+    }
+}
+
+function createBackgroundSparkles(count){
+  for(let i=0;i<count;i++){
+    particles.push(new Particle(Math.random()*width, Math.random()*height,false));
+  }
+}
+
+function createSparkleBurst(x,y,count){
+  for(let i=0;i<count;i++){
+    if(particles.length>=maxParticles) particles.shift();
+    particles.push(new Particle(x,y,true));
+  }
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+  ctx.fillStyle="#05051A";
+  ctx.fillRect(0,0,width,height);
+
+  for(let i=0;i<particles.length;i++){
+    let p=particles[i];
+    p.update();
+    p.draw();
+    if(p.isBurst && p.alpha<=0){ particles.splice(i,1); i--; }
+  }
+}
+window.onload=()=>{ createBackgroundSparkles(100); animate(); };
+</script>
+
 
 </body>
 </html>
