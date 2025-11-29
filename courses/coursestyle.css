@@ -564,7 +564,9 @@
   transition: transform 0.3s ease;
   cursor: pointer;
   }
-
+  .module.active .tag_arrow {
+  transform: rotate(180deg);
+}
   .duration {
     font-size: 0.9rem;
     color: #ddd;

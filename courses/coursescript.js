@@ -38,13 +38,15 @@ const buttons = document.querySelectorAll(".cert-btn");
       });
     });
 
-    const modules = document.querySelectorAll('.module');
+ const modules = document.querySelectorAll('.module');
 
-  modules.forEach(module => {
-    module.querySelector('.module-header').addEventListener('click', () => {
-      module.classList.toggle('active');
-    });
+modules.forEach(module => {
+  const header = module.querySelector('.module-header');
+  header.addEventListener('click', () => {
+    module.classList.toggle('active');
   });
+});
+
 
 //   const faqs = document.querySelectorAll(".faq-item");
 // faqs.forEach(faq => {

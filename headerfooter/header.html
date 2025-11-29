@@ -35,7 +35,7 @@
   <nav>
     <a href="../index.html">Home</a>
     <div class="dropdown">
-      <button class="drop-btn">About us<span class="arrow">▿</span></button>
+      <button class="drop-btn">About us▿</button>
       <div class="dropdown-content">
         <a href="../about.html">About</a>
         <a href="../faqs.html">FAQs</a>
@@ -43,9 +43,8 @@
     </div>
 
     <div class="dropdown">
-      <button class="drop-btn">Courses<span class="arrow">▿</span></button>
+      <button class="drop-btn">Courses▿</button>
       <div class="dropdown-content">
-        <!-- <a href="courses.html">Popular</a> -->
         <a href="../it.html">IT</a>
         <a href="../pharma.html">Pharma</a>
         <a href="../nonit.html">Non IT</a>
@@ -62,6 +61,29 @@
 
 
 <style>
+
+.navbar nav {
+    display: flex !important;
+    align-items: center;
+    gap: 0.2rem !important;
+}
+
+.navbar nav > * {
+    width: 110px;       
+    text-align: center;
+}
+
+.site-header .navbar nav a,
+.navbar nav > .dropdown {
+    margin: 0 !important;
+}
+
+.site-header .dropdown .drop-btn,
+.site-header .dropdown .dropdown-content a {
+    padding: 0.5rem 1rem !important;
+    margin: 0 !important;
+}
+
 
 .site-header {
   font-family: "Poppins", sans-serif;
@@ -180,7 +202,7 @@
 
 /* === Navbar Links === */
 .site-header .navbar nav a {
-  margin: 0 1rem;
+  margin: 0 1.2rem;
   color: #333;
   text-decoration: none;
   font-weight: 500;
@@ -419,7 +441,14 @@
     box-shadow: none;
   }
 }
+.site-header .dropdown .drop-btn {
+  padding: 0.7rem 1.2rem;
+}
 
+.site-header .dropdown .dropdown-content a {
+  padding: 0.7rem 1.2rem;
+  margin: 0 !important;
+}
 </style>
 
 

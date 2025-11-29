@@ -831,86 +831,89 @@ form button {
 .star{
     color: red;
 }
-.highlightbtn{
+
+.highlightbtn { 
   color: #007A86;
   font-size: 1.3rem;
   font-weight: 520;
 }
-.hgbtn{
+
+.hgbtn {
   color: #007A86;
   font-size: 1.1rem;
 }
+
 .infosection {
   flex: 1 1 45%;
-  /* color: #1e1e2a; */
   margin-left: 5%;
   margin-top: 4rem;
   color: #fff;
 }
 
 .infosection h3 {
-      position: relative;
-      font-size: 2rem;
-      font-weight: 700;
-      height: 3rem;
-      overflow: hidden;
-      text-transform: uppercase;
-      text-align: center;
-      color: #fff;
-      margin-top: 3rem;
-    }
-    .pp{
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-top: 3rem;
+  text-transform: uppercase;
+  overflow: hidden;
+}
 
-    .infosection h3 p {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0;
-      /* background: linear-gradient(90deg, #8324f8, #f544ae, #048cb9); */
-      background-color: #66D6FF;
-      color: #fff;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeRotate 12s infinite;
-      text-shadow: 0 0 20px rgba(155, 93, 229, 0.3);
-    }
+/* VISIBLE WINDOW */
+.course-slider {
+  height: 3.2rem;      /* space for one line */
+  overflow: hidden;
+  position: relative;
+}
 
-    .infosection h3 p:nth-child(1) { animation-delay: 0s; }
-    .infosection h3 p:nth-child(2) { animation-delay: 3s; }
-    .infosection h3 p:nth-child(3) { animation-delay: 6s; }
-    .infosection h3 p:nth-child(4) { animation-delay: 9s; }
+/* FULL LIST */
+.course-list {
+  display: flex;
+  flex-direction: column;
+  animation: slideCourses 39s infinite;
+}
 
-    @keyframes fadeRotate {
-      0% { opacity: 0; transform: translateY(20px); }
-      5% { opacity: 1; transform: translateY(0); }
-      25% { opacity: 1; transform: translateY(0); }
-      30% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 0; }
-    }
+/* Text style */
+.course-list p {
+  margin: 0;
+  height: 3.2rem;
+  line-height: 3.2rem;
 
-    @media (max-width: 768px) {
-      .infosection h3 {
-        font-size: 1.8rem;
-        height: 2.4rem;
-      }
-    }
+  background-color: #66D6FF;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    @media (max-width: 480px) {
-      .infosection h3 {
-        font-size: 1.4rem;
-        height: 2rem;
-        letter-spacing: 1px;
-      }
+/* 13 items × 3 seconds = 39 seconds */
+@keyframes slideCourses {
+  0% { transform: translateY(0); }
+  7.7% { transform: translateY(-3.2rem); }
+  15.4% { transform: translateY(-6.4rem); }
+  23.1% { transform: translateY(-9.6rem); }
+  30.8% { transform: translateY(-12.8rem); }
+  38.5% { transform: translateY(-16rem); }
+  46.2% { transform: translateY(-19.2rem); }
+  53.9% { transform: translateY(-22.4rem); }
+  61.6% { transform: translateY(-25.6rem); }
+  69.3% { transform: translateY(-28.8rem); }
+  77% { transform: translateY(-32rem); }
+  84.7% { transform: translateY(-35.2rem); }
+  92.4% { transform: translateY(-38.4rem); }
+  100% { transform: translateY(0); }
+}
 
-      .infosection p{
-        text-align: justify; 
-        text-justify: inter-word;
-      }
-    }
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .infosection h3 { font-size: 1.4rem; }
+  .course-slider {
+    height: 2.4rem;
+  }
+  .course-list p {
+    height: 2.4rem;
+    line-height: 2.4rem;
+  }
+}
 
 
 .acrdt{
