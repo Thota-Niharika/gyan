@@ -2629,7 +2629,7 @@ form button {
   }
 
   .program-gallery {
-    margin-top: 10%;
+    /* margin-top: 10%; */
     flex: 1 1 55%;     
     max-height: 55vh;   
     overflow-y: scroll; 
@@ -2671,10 +2671,10 @@ form button {
   }
 
   .cta-btn {
-    bottom: 55%;  
-    right: 7%;     
+    bottom: 65%;  
+    left: -5%;    
     transform: translateX(-50%);
-    width: 12rem;
+    width: 8rem;
     height: 2.8rem;
     font-size: 0.9rem;
   }
