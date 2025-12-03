@@ -2311,7 +2311,7 @@ form button {
   }
 
   .labels .end{
-  margin-right: -10%;
+  margin-right: -40%;
   }
 }
 
@@ -2628,6 +2628,7 @@ form button {
   }
 
   .program-gallery {
+    margin-top: 5%;
     flex: 1 1 55%;     
     max-height: 55vh;   
     overflow-y: scroll; 
@@ -2639,8 +2640,8 @@ form button {
   .cta-btn {
     width: 12rem;
     height: 3rem;
-    left: 1%;
-    bottom: 15%;
+    left: -5%;
+    bottom: 25%;
   }
 }
 
