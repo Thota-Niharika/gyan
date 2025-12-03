@@ -2288,6 +2288,7 @@ form button {
     gap: 1rem;
     text-align: justify; 
     text-justify: inter-word;
+    height: fit-content;
   }
 
   .step {
@@ -2311,7 +2312,7 @@ form button {
   }
 
   .labels .end{
-  margin-right: -40%;
+  padding-right: -60%;
   }
 }
 
@@ -2628,7 +2629,7 @@ form button {
   }
 
   .program-gallery {
-    margin-top: 5%;
+    margin-top: 10%;
     flex: 1 1 55%;     
     max-height: 55vh;   
     overflow-y: scroll; 
