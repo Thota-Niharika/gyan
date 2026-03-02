@@ -19,7 +19,7 @@ const LeadFormPage = () => {
         if (path.includes('internship')) {
             return {
                 title: "Kickstart Your Career with Industry Internships",
-                image: "/images/contact.png",
+                image: "/images/InternshipOpp.png",
                 source: "internshipForm"
             };
         } else if (path.includes('certification')) {
@@ -31,19 +31,19 @@ const LeadFormPage = () => {
         } else if (path.includes('mentorship')) {
             return {
                 title: "Accelerate Your Growth with Industry Mentorship",
-                image: "/images/career-support.jpg",
+                image: "/images/mentorshipimg.png",
                 source: "mentorshipForm"
             };
         } else if (path.includes('project')) {
             return {
                 title: "Work on Real-World Industry Projects",
-                image: "/images/features.jpg",
+                image: "/images/projectimage.png",
                 source: "projectForm"
             };
         } else if (path.includes('liveevents')) {
             return {
                 title: "Register for Upcoming Live Events & Workshops",
-                image: "/images/contact.png",
+                image: "/images/liveeventsimg.png",
                 source: "liveEventsForm"
             };
         } else if (path.includes('enroll')) {
@@ -55,7 +55,7 @@ const LeadFormPage = () => {
         } else if (path.includes('guidance')) {
             return {
                 title: "Need Guidance? We're Here to Help!",
-                image: "/images/contact.png",
+                image: "/images/answering.png",
                 source: "answerForm"
             };
         }
@@ -98,64 +98,56 @@ const LeadFormPage = () => {
     };
 
     return (
-        <section className="lead-form-page">
-            <div className="container">
-                <h1>{config.title}</h1>
-                <div className="form-layout">
-                    <div className="form-container">
-                        <form onSubmit={handleSubmit} className="lead-form">
-                            <div className="form-group">
-                                <label htmlFor="name">Your Name<span className="star">*</span>:</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+        <section className="connectplan">
+            <h1>{config.title}</h1>
+            <div className="connectform-container">
+                <div className="connectform">
+                    <form className="lead-table" onSubmit={handleSubmit}>
+                        <label htmlFor="name">Your Name<span className="star">*</span>:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
 
-                            <div className="form-group">
-                                <label htmlFor="email">Email Address<span className="star">*</span>:</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+                        <label htmlFor="email">Email Address<span className="star">*</span>:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
 
-                            <div className="form-group">
-                                <label htmlFor="number">Mobile Number<span className="star">*</span>:</label>
-                                <input
-                                    type="tel"
-                                    id="number"
-                                    name="mobileNumber"
-                                    value={formData.mobileNumber}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+                        <label htmlFor="number">Mobile Number<span className="star">*</span>:</label>
+                        <input
+                            type="tel"
+                            id="number"
+                            name="mobileNumber"
+                            value={formData.mobileNumber}
+                            onChange={handleChange}
+                            required
+                        />
 
-                            <button type="submit" className="btn" disabled={loading}>
-                                <span>{loading ? 'Submitting...' : 'Submit'}</span>
-                                <div className="liquid"></div>
-                            </button>
-                        </form>
+                        <button type="submit" className="btn" disabled={loading}>
+                            <span>{loading ? 'Submitting...' : 'Submit'}</span>
+                            <div className="liquid"></div>
+                        </button>
+                    </form>
 
-                        {status.message && (
-                            <div className={`status-message ${status.type}`}>
-                                {status.message}
-                            </div>
-                        )}
-                    </div>
+                    {status.message && (
+                        <div className={`status-message ${status.type}`}>
+                            {status.message}
+                        </div>
+                    )}
+                </div>
 
-                    <div className="image-container">
-                        <img src={getAssetUrl(config.image)} alt={config.title} />
-                    </div>
+                <div className="connectform">
+                    <img src={getAssetUrl(config.image)} alt={config.title} />
                 </div>
             </div>
         </section>

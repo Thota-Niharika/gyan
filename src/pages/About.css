@@ -1,0 +1,419 @@
+:root {
+    --primary: #00f2ff;
+    --secondary: #7000ff;
+    --bg: #010108;
+    --text-dim: #8899af;
+    --glass: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.07);
+}
+
+.about-masterpiece {
+    background-color: var(--bg);
+    color: #fff;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Architecture */
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.beam-effect {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    width: 1px;
+    height: 140%;
+    background: linear-gradient(to bottom, transparent, var(--primary), var(--secondary), transparent);
+    transform: translateX(-50%) rotate(35deg);
+    opacity: 0.1;
+    z-index: 2;
+    filter: blur(2px);
+    animation: beam-slide 10s linear infinite;
+}
+
+@keyframes beam-slide {
+    from {
+        transform: translateX(-200%) rotate(35deg);
+    }
+
+    to {
+        transform: translateX(200%) rotate(35deg);
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 10;
+}
+
+/* SECTION 1: THE PORTAL HERO */
+.hero-portal {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: 1rem;
+}
+
+.badge-outline {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.5rem 2.5rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: rgba(0, 242, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+.headline-xl {
+    font-size: clamp(3rem, 9vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -5px;
+    margin-bottom: 3rem;
+}
+
+.text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+}
+
+.hero-sub {
+    font-size: 1.5rem;
+    color: var(--text-dim);
+    max-width: 800px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* SECTION 2: THE ARCHITECTS GRID */
+.architect-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 60px);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.grid-item {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--px) var(--py), rgba(255, 255, 255, 0.05), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.grid-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-10px) scale(1.01);
+}
+
+.grid-item:hover::before {
+    opacity: 1;
+}
+
+/* Named Grid Areas */
+.area-vision {
+    grid-area: 1 / 1 / 7 / 7;
+}
+
+.area-stats-1 {
+    grid-area: 1 / 7 / 4 / 10;
+}
+
+.area-stats-2 {
+    grid-area: 4 / 7 / 7 / 10;
+}
+
+.area-img {
+    grid-area: 1 / 10 / 13 / 13;
+}
+
+.area-mission {
+    grid-area: 7 / 1 / 13 / 10;
+}
+
+.item-label {
+    font-size: 0.7rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 800;
+}
+
+.grid-item h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.grid-item p {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+}
+
+/* Stats specific */
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.big-num {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+
+.big-label {
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* Image Visual */
+.img-visual-box {
+    padding: 0;
+}
+
+.img-visual-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg) 10%, transparent);
+}
+
+/* SECTION 3: THE NEURAL TIMELINE */
+.timeline-section {
+    padding: -1rem 0;
+    position: relative;
+    bottom: -1rem;
+}
+
+.neural-line {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    bottom: 10%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--primary), var(--secondary), transparent);
+    transform: translateX(-50%);
+    opacity: 0.2;
+}
+
+.timeline-era {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10rem;
+    position: relative;
+    width: 100%;
+}
+
+.era-side {
+    width: 45%;
+    position: relative;
+}
+
+.era-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 3rem;
+    padding: 4rem;
+    backdrop-filter: blur(40px);
+    position: relative;
+    z-index: 5;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.era-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.era-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 30px var(--primary);
+}
+
+.era-node::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    animation: node-pulse 2s infinite;
+}
+
+@keyframes node-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.era-year {
+    font-size: 10rem;
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: -4rem;
+    z-index: 1;
+}
+
+.era-visual {
+    width: 45%;
+    border-radius: 3rem;
+    overflow: hidden;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.era-visual img {
+    width: 100%;
+    display: block;
+    transition: transform 1s ease;
+}
+
+.era-card:hover+.era-visual img,
+.era-visual:hover img {
+    transform: scale(1.1);
+}
+
+.holograph-tag {
+    display: inline-block;
+    padding: 0.4rem 1.5rem;
+    background: rgba(0, 242, 255, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 50px;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: -2rem;
+}
+
+.era-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.era-desc {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+}
+
+/* GRAIN */
+.film-grain {
+    position: fixed;
+    inset: 0;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .architect-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .grid-item {
+        height: auto !important;
+    }
+
+    /* RESPONSIVE UPGRADES */
+    .neural-line {
+        display: none;
+    }
+
+    .timeline-era {
+        flex-direction: column;
+        gap: 4rem;
+        margin-bottom: 15rem;
+    }
+
+    .era-side,
+    .era-visual {
+        width: 100%;
+    }
+
+    .era-year {
+        font-size: 6rem;
+        top: -2rem;
+    }
+}

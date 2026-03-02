@@ -4,20 +4,7 @@ import Navbar from './Navbar';
 
 const Header = () => {
     useEffect(() => {
-        const handleScroll = () => {
-            const topBar = document.getElementById('topBar');
-            if (window.scrollY > 50) {
-                topBar?.classList.add('hidden');
-            } else {
-                topBar?.classList.remove('hidden');
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        // Scroll logic removed as navbar should remain sticky and not move
     }, []);
 
     return (

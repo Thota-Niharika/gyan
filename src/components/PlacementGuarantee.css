@@ -160,3 +160,41 @@
 .view-all-btn:hover .liquid {
     top: -30px;
 }
+
+@media (max-width: 768px) {
+    .placement-section {
+        padding: 2rem 5%;
+    }
+
+    .placement-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .placement-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .placement-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .placement-card .buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .placement-card .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .placement-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .placement-card .content {
+        padding: 1rem;
+    }
+}

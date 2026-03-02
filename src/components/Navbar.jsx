@@ -33,15 +33,6 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const mainNav = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                mainNav?.classList.add('fixed');
-            } else {
-                mainNav?.classList.remove('fixed');
-            }
-        };
-
         const handleClickOutside = (event) => {
             if (navbarRef.current && !navbarRef.current.contains(event.target)) {
                 setOpenDropdown(null);
@@ -50,11 +41,9 @@ const Navbar = () => {
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
         document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
@@ -144,8 +133,25 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <Link to="/events" onClick={closeAll}>Events</Link>
-                <Link to="/careers" onClick={closeAll}>Careers</Link>
+                <div
+                    className={`dropdown ${openDropdown === 'resources' ? 'open' : ''}`}
+                    onMouseEnter={() => window.innerWidth > 768 && setOpenDropdown('resources')}
+                    onMouseLeave={() => window.innerWidth > 768 && setOpenDropdown(null)}
+                >
+                    <div className="drop-btn-wrapper">
+                        <span className="drop-btn">Resources</span>
+                        <button className="dropdown-toggle-btn" onClick={() => toggleDropdown('resources')}>
+                            <i className={`fas fa-chevron-${openDropdown === 'resources' ? 'up' : 'down'}`}></i>
+                        </button>
+                    </div>
+                    <div className="dropdown-content">
+                        <Link to="/events" onClick={closeAll}>Events</Link>
+                        <Link to="/careers" onClick={closeAll}>Careers</Link>
+                        <Link to="/blog" onClick={closeAll}>Blogs</Link>
+                        <Link to="/learn-hub" onClick={closeAll}>Learn Hub</Link>
+                    </div>
+                </div>
+
                 <Link to="/contact" onClick={closeAll}>Contact us</Link>
                 <Link to="/login" className="login-nav-btn" onClick={closeAll}>
                     <span>Login</span>

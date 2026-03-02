@@ -70,10 +70,13 @@ const FloatingWidgets = () => {
                     <div className="ai-chat-box">
                         <div className="chat-header">
                             <div className="header-info">
-                                <span className="online-indicator"></span>
-                                <div>
+                                <div className="avatar-wrapper">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2593/2593635.png" alt="AI Avatar" className="ai-avatar-img" />
+                                    <span className="online-indicator"></span>
+                                </div>
+                                <div className="header-text">
                                     <h3>Gyantrix AI</h3>
-                                    <span style={{ fontSize: '10px', opacity: 0.8 }}>Professional Virtual Assistant</span>
+                                    <span className="assistant-status">Online & Ready to Help</span>
                                 </div>
                             </div>
                             <button className="close-chat" onClick={toggleChat}>&times;</button>
@@ -81,39 +84,55 @@ const FloatingWidgets = () => {
                         <div className="chat-messages" ref={scrollRef}>
                             {messages.map((msg, idx) => (
                                 <div key={idx} className={`message ${msg.type}`}>
-                                    {msg.text}
+                                    {msg.type === 'ai' && (
+                                        <div className="ai-msg-avatar">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/2593/2593635.png" alt="AI" />
+                                        </div>
+                                    )}
+                                    <div className="message-text">{msg.text}</div>
                                 </div>
                             ))}
                             {isTyping && (
                                 <div className="message ai typing">
-                                    <span></span><span></span><span></span>
+                                    <div className="ai-msg-avatar">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2593/2593635.png" alt="AI" />
+                                    </div>
+                                    <div className="typing-dots">
+                                        <span></span><span></span><span></span>
+                                    </div>
                                 </div>
                             )}
                         </div>
                         <form className="chat-input-area" onSubmit={handleSend}>
                             <input
                                 type="text"
-                                placeholder="Type your question properly..."
+                                placeholder="Ask a career question..."
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                             />
                             <button type="submit" className="send-msg">
                                 <i className="fas fa-paper-plane"></i>
+                                <div className="ripple"></div>
                             </button>
                         </form>
                     </div>
                 )}
 
                 <button
-                    className="ai-chat-float"
+                    className={`ai-chat-float ${isOpen ? 'active' : ''}`}
                     onClick={toggleChat}
                     title="Open AI Chat"
                 >
-                    {isOpen ? (
-                        <i className="fas fa-times"></i>
-                    ) : (
-                        <i className="fas fa-robot"></i>
-                    )}
+                    <div className="btn-content">
+                        {isOpen ? (
+                            <i className="fas fa-times"></i>
+                        ) : (
+                            <div className="pulse-container">
+                                <i className="fas fa-comment-dots"></i>
+                                <div className="pulse-ring"></div>
+                            </div>
+                        )}
+                    </div>
                 </button>
             </div>
         </div>

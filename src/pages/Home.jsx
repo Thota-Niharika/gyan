@@ -59,7 +59,7 @@ const Home = () => {
                 <div className="hero-content">
                     <h1>Building Next Generation AI and Tech Professionals</h1>
                     <h3>India’s Leading and <span className="highlight">Trusted IT Training</span></h3>
-                    <div className="infosection hero-info">
+                    <div className="infosection hero-infosection">
                         <p className="pp"><span className="highlightbtn">Gain real-world experience with guidance from industry experts.</span></p>
                         <p>Powered by an <span className="hgbtn">AI-Enabled LMS,</span> we’re empowering the next generation of</p>
                         <div className="course-slider">
@@ -139,7 +139,7 @@ const Home = () => {
                     </div>
 
                     <div className="center">
-                        <img src={getAssetUrl("/images/hero11.png")} alt="Center Logo" />
+                        <img src={getAssetUrl("/images/gy1.jpg")} alt="Center Logo" />
                     </div>
                 </div>
 
@@ -239,36 +239,49 @@ const Home = () => {
             <CourseTrending initialCategory="trending" showFilters={true} />
 
             {/* Partners section */}
-            <section className="partners">
-                <div className="partners-heading">
-                    <h3>Trusted by 500+ Enterprises</h3>
-                    <p>Empowering 500+ enterprises to accelerate growth & innovation by building future-ready AI teams.</p>
-                </div>
+            <section className="partners premium-partners">
                 <div className="partners-main">
                     <div className="partners-content">
-                        <p>Gyantrix Academy learners are recognized for their excellence in Full Stack Development, Data Science & Analytics with AI, DevOps with AWS, Software Testing, Digital Marketing, and Investment Banking.</p>
-                        <p>Top organizations trust our graduates for their hands-on expertise and job readiness.</p>
-                    </div>
-                    <div className="partners-logos">
-                        <div className="logo-row left-scroll">
-                            <div className="logo-track">
-                                {['IBM.png', 'Wiprologo1.jpg', 'infosys_logo.png', 'amazon.png', 'genpact.jpg', 'accenture.webp', 'Intel.png'].map(img => (
-                                    <img key={img} src={getAssetUrl(`/images/${img}`)} alt={img} />
-                                ))}
-                                {['IBM.png', 'Wiprologo1.jpg', 'infosys_logo.png', 'amazon.png', 'genpact.jpg', 'accenture.webp', 'Intel.png'].map(img => (
-                                    <img key={`dup-${img}`} src={getAssetUrl(`/images/${img}`)} alt={img} />
-                                ))}
-                            </div>
+                        <div className="partners-brand">
+                            Gyantrix {/*<span className="fx-box">GA</span> */}
                         </div>
-                        <div className="logo-row right-scroll">
-                            <div className="logo-track">
-                                {['publicis-sapient.png', 'wns.jpg', 'fractal.png', 'clubmahindra.png', 'ABInBev.png', 'TVS.png', 'americanexpress.png'].map(img => (
-                                    <img key={img} src={getAssetUrl(`/images/${img}`)} alt={img} />
-                                ))}
-                                {['publicis-sapient.png', 'wns.jpg', 'fractal.png', 'clubmahindra.png', 'ABInBev.png', 'TVS.png', 'americanexpress.png'].map(img => (
-                                    <img key={`dup-${img}`} src={getAssetUrl(`/images/${img}`)} alt={img} />
-                                ))}
-                            </div>
+                        <h1 className="partners-title-large">Trusted by 500+ Global Enterprises</h1>
+                        <ul className="partners-bullets">
+                            <li>Empowering 500+ enterprises to accelerate growth & innovation by building future-ready AI teams.</li>
+                            <li>Learners are recognized for their excellence in Full Stack, Data Science, AI, DevOps, and more.</li>
+                            <li>Top organizations trust our graduates for their hands-on expertise and job readiness.</li>
+                        </ul>
+                        <Link to="/courses" className="partners-cta">
+                            Discover Gyantrix Academy <i className="fas fa-arrow-right"></i>
+                        </Link>
+                    </div>
+
+                    <div className="partners-logos-container">
+                        <div className="partners-logos vertical-scroll no-gap">
+                            {[1, 2, 3, 4].map((colIndex) => (
+                                <div key={colIndex} className="logo-col scroll-up">
+                                    <div className={`logo-track-vertical speed-${colIndex === 1 ? 'medium' : colIndex === 2 ? 'slow' : colIndex === 3 ? 'fast' : 'medium'}`}>
+                                        {(colIndex === 1 ? ['IBM.png', 'Wiprologo1.jpg', 'infosys_logo.png', 'amazon.png', 'genpact.jpg'] :
+                                            colIndex === 2 ? ['accenture.webp', 'Intel.png', 'publicis-sapient.png', 'wns.jpg', 'fractal.png'] :
+                                                colIndex === 3 ? ['clubmahindra.png', 'ABInBev.png', 'TVS.png', 'americanexpress.png', 'Meta.png'] :
+                                                    ['AWS.png', 'goggle.png', 'mphasis.jpeg', 'sapient.png', 'infosys_logo.png']).map(img => (
+                                                        <img key={img} src={getAssetUrl(`/images/${img}`)} alt={img} />
+                                                    ))}
+                                        {(colIndex === 1 ? ['IBM.png', 'Wiprologo1.jpg', 'infosys_logo.png', 'amazon.png', 'genpact.jpg'] :
+                                            colIndex === 2 ? ['accenture.webp', 'Intel.png', 'publicis-sapient.png', 'wns.jpg', 'fractal.png'] :
+                                                colIndex === 3 ? ['clubmahindra.png', 'ABInBev.png', 'TVS.png', 'americanexpress.png', 'Meta.png'] :
+                                                    ['AWS.png', 'goggle.png', 'mphasis.jpeg', 'sapient.png', 'infosys_logo.png']).map(img => (
+                                                        <img key={`dup-${colIndex}-${img}`} src={getAssetUrl(`/images/${img}`)} alt={img} />
+                                                    ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Pagination dots like in the image */}
+                        <div className="partners-pagination">
+                            <span className="dot active"></span>
+                            <span className="dot"></span>
+                            <span className="dot"></span>
                         </div>
                     </div>
                 </div>

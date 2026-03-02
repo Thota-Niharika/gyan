@@ -4,7 +4,7 @@
   color: #333;
   position: relative;
   z-index: 2000;
-  margin-bottom: 5rem;
+  /* margin-bottom removed: body padding-top now handles navbar offset */
 }
 
 /* === Top Bar === */
@@ -125,9 +125,7 @@
     margin-top: 8px;
   }
 
-  .site-header {
-    margin-bottom: 10rem;
-  }
+  /* .site-header margin-bottom removed — handled by body padding-top */
 
   /* .site-header .top-bar {
     flex-direction: column;

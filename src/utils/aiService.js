@@ -82,10 +82,36 @@ function simulateAI(input) {
     });
 
     if (matchedCourse) {
-        // Handle curriculum/modules request
-        if (query.includes('curriculum') || query.includes('module') || query.includes('syllabus') || query.includes('what do you teach') || query.includes('subjects')) {
-            const modulesList = matchedCourse.modules.map((m, i) => `${i + 1}. ${m.title}`).join(', ');
-            return `The curriculum for ${matchedCourse.title} includes: ${modulesList}. Each module is designed to give you hands-on experience with industry-standard tools.`;
+        // Handle "meaning", "what is", "about" or general info requests (Highest Quality Explanation)
+        if (query.includes('meaning') || query.includes('what is') || query.includes('about') || query.includes('explain') || query.includes('define')) {
+            return `**${matchedCourse.title}**: ${matchedCourse.desc}\n\nThis professional track at Gyantrix is designed to equip you with ${matchedCourse.level} level expertise. During the course, you will master essential industry tools like ${matchedCourse.tools.slice(0, 3).map(t => t.name).join(', ')}. It’s an excellent choice if you're looking to build a high-growth career in this field. Would you like to see the detailed curriculum?`;
+        }
+
+        // Handle "tools", "software", "technologies" or "stack" requests
+        if (query.includes('tool') || query.includes('software') || query.includes('technology') || query.includes('stack')) {
+            const toolExplanations = {
+                'python': 'an essential language for data automation and backend logic.',
+                'react': 'a powerful library for building interactive, lightning-fast user interfaces.',
+                'sql': 'the industry standard for managing and querying large-scale databases.',
+                'tensorflow': 'a leading framework for building and training advanced AI models.',
+                'node.js': 'a runtime environment used to build scalable server-side applications.',
+                'power bi': 'a business analytics tool used to create stunning data visualizations.',
+                'tableau': 'a visual analytics platform for transforming data into actionable insights.',
+                'excel': 'a fundamental tool for organized data calculation and entry-level analysis.',
+                'docker': 'used for containerizing applications to ensure they run anywhere consistently.',
+                'aws': 'the world\'s most comprehensive cloud platform for hosting global applications.',
+                'javascript': 'the core language of the web, used for adding interactivity to sites.',
+                'html': 'the fundamental structure of every web page on the internet.',
+                'css': 'the styling language used to create beautiful, modern web designs.'
+            };
+
+            const toolsList = matchedCourse.tools.map(t => {
+                const nameLower = t.name.toLowerCase();
+                const explanation = toolExplanations[nameLower] || 'an industry-standard tool used for professional projects.';
+                return `• **${t.name}**: ${explanation}`;
+            }).join('\n');
+
+            return `In the **${matchedCourse.title}** program, you will master these powerful tools:\n\n${toolsList}\n\nOur curriculum ensures you gain practical, job-ready skills with each of these technologies.`;
         }
 
         // Handle fee/price request
@@ -98,8 +124,8 @@ function simulateAI(input) {
             return `For ${matchedCourse.title}, we offer 100% placement assistance. Our graduates land roles at top companies with starting packages up to 6.5 LPA. We help with resume building and mock interviews.`;
         }
 
-        // Default course info
-        return `${matchedCourse.title}: ${matchedCourse.desc} It is a comprehensive program with a fee of ${matchedCourse.price} and full placement support. What specific details would you like to know?`;
+        // Default course info (Comprehensive summary)
+        return `**${matchedCourse.title}**: ${matchedCourse.desc}\n\nAt Gyantrix, this program offers hands-on training using tools like ${matchedCourse.tools.slice(0, 4).map(t => t.name).join(', ')} with full placement support. What specific details (like fees or modules) can I help you with?`;
     }
 
     // 2. Generic administrative queries

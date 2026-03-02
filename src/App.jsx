@@ -31,15 +31,18 @@ import PlacementCourses from './pages/PlacementCourses';
 import StudentPrograms from './pages/StudentPrograms';
 import SparkleBackground from './components/SparkleBackground';
 import CurtainEffect from './components/CurtainEffect';
+import ScrollToTop from './components/ScrollToTop';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
     return (
         <Router>
+            <ScrollToTop />
+            <CustomCursor />
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    {/* <Route path="courses" element={<TrendingCourses />} /> */}
-                    {/* <Route path="trending-courses" element={<TrendingCourses />} /> */}
+                    <Route path="courses" element={<StudentPrograms />} />
                     <Route path="courses/:courseId" element={<CourseDetail />} />
                     <Route path="about" element={<About />} />
                     <Route path="faqs" element={<FAQs />} />
@@ -74,6 +77,10 @@ function App() {
                     <Route path="curtain" element={<CurtainEffect />} />
                     <Route path="placement-guarantee" element={<PlacementCourses />} />
                     <Route path="student-programs" element={<StudentPrograms />} />
+                    <Route path="certification" element={<Navigate to="/certification-form" replace />} />
+                    <Route path="live-events" element={<Navigate to="/liveevents-form" replace />} />
+                    <Route path="answer-form" element={<Navigate to="/guidance-form" replace />} />
+                    <Route path="learn-hub" element={<Navigate to="/dashboard" replace />} />
                     <Route path="index.html" element={<Navigate to="/" replace />} />
                     <Route path="events.html" element={<Navigate to="/" replace />} />
                     {/* Add other nested routes here */}

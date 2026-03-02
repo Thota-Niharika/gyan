@@ -54,7 +54,7 @@ const CareerForm = () => {
                     </form>
                 </div>
                 <div className="connectform">
-                    <img src={getAssetUrl("/images/contact.png")} alt="Career Guidance" />
+                    <img src={getAssetUrl("/images/careergrowthcards.png")} alt="Career Guidance" />
                 </div>
             </div>
         </section>

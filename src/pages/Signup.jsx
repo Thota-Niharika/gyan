@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import bannerImage from '../assets/bannerimage_ga.png';
+import logo from '../assets/gy1.jpg';
 
 const Signup = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,16 +15,16 @@ const Signup = () => {
 
     const slides = [
         {
+            title: "Join Our Dynamic Learning Community",
+            description: "Experience the best of tech education with our comprehensive student programs.",
+            image: bannerImage,
+            link: "/student-programs"
+        },
+        {
             title: "Smart Agriculture Certification",
             description: "Explore the intersection of technology and agriculture with modern tools.",
             image: "/images/agrillu.png",
             link: "/agriculture"
-        },
-        {
-            title: "Join Our Dynamic Learning Community",
-            description: "Experience the best of tech education with our comprehensive student programs.",
-            image: "/images/bannerimage_ga.png",
-            link: "/student-programs"
         },
         {
             title: "Professional Management Skills",
@@ -59,7 +61,7 @@ const Signup = () => {
                 <div className="login-form-section">
                     <div className="form-wrapper">
                         <div className="login-logo">
-                            <img src="/images/gy1.png" alt="Gyantrix Logo" />
+                            <img src={logo} alt="Gyantrix Logo" />
                             <span className='gyantrix_content'>yantrix</span>
                         </div>
 

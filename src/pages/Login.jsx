@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 
 import logo from '../assets/gy1.jpg';
+import bannerImage from '../assets/bannerimage_ga.png';
 
 const Login = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,6 +13,12 @@ const Login = () => {
     });
 
     const slides = [
+        {
+            title: "Industry Leading Curriculum",
+            description: "Access our vast library of resources and expert-led course modules.",
+            image: bannerImage,
+            link: "/student-programs"
+        },
         {
             title: "Elevate Your Career with AI Software Development",
             description: "Master the future of tech with our comprehensive AI-driven curriculum.",
@@ -23,12 +30,6 @@ const Login = () => {
             description: "Learn to create stunning user interfaces and seamless experiences.",
             image: "/images/UI-UX-illu.png",
             link: "/it"
-        },
-        {
-            title: "Industry Leading Curriculum",
-            description: "Access our vast library of resources and expert-led course modules.",
-            image: "/images/bannerimage_ga.png",
-            link: "/student-programs"
         },
         {
             title: "MS Office Masterclass",
@@ -103,7 +104,7 @@ const Login = () => {
                         </div>
 
                         <div className="login-header">
-                            <h1>Login & Get codified</h1>
+                            <h1>Login & Access Controls</h1>
 
                         </div>
 

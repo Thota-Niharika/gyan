@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { coursesData } from '../data/courses';
 import { getAssetUrl } from '../utils/assets';
@@ -6,6 +6,7 @@ import './CourseDetail.css';
 
 const CourseDetail = () => {
     const { courseId } = useParams();
+    const sectionRef = useRef(null);
     const [activeModule, setActiveModule] = useState(null);
     const [activeFaq, setActiveFaq] = useState(null);
     const [activeCert, setActiveCert] = useState('gyantrix');
@@ -18,6 +19,23 @@ const CourseDetail = () => {
     if (!course) {
         return <Navigate to="/courses" replace />;
     }
+
+    // Mouse Tracking for Advantage Section
+    useEffect(() => {
+        const section = sectionRef.current;
+        if (!section) return;
+
+        const handleMouseMove = (e) => {
+            const rect = section.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            section.style.setProperty('--mx', `${x}%`);
+            section.style.setProperty('--my', `${y}%`);
+        };
+
+        section.addEventListener('mousemove', handleMouseMove);
+        return () => section.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     // Initialize reviews from course data on mount or course change
     useEffect(() => {
@@ -215,73 +233,51 @@ const CourseDetail = () => {
                 </div>
             </section>
 
-            {/* The Gyantrix Advantage - Redesigned Offering Section */}
-            <section className="advantage-section">
-                <div className="advantage-bg-elements">
-                    <div className="adv-shape-1"></div>
-                    <div className="adv-shape-2"></div>
+            <section className="advantage-section quantum-interface" ref={sectionRef}>
+                <div className="quantum-grid-bg"></div>
+                <div className="quantum-scanner-beam"></div>
+
+                <div className="section-header-v4 scroll-reveal">
+                    <div className="quantum-tag">
+                        <span className="pulse-dot"></span>
+                        ADVANTAGE ANALYTICS v4.0
+                    </div>
+                    <h2 className="quantum-title">The Gyantrix <span className="glitch-text" data-text="Advantage">Advantage</span></h2>
+                    <p className="quantum-subtitle">Deploying a hyper-structured ecosystem for elite technical evolution.</p>
                 </div>
 
-                <div className="section-header-v2">
-                    <span className="adv-eyebrow">Why Choose Us?</span>
-                    <h2 className="adv-title">The Gyantrix <span className="text-gradient">Advantage</span></h2>
-                    <p className="adv-subtitle">We don't just teach code; we forge industry-ready professionals with a curriculum designed for the future.</p>
-                </div>
+                <div className="quantum-grid-layout">
+                    {[
+                        { icon: "fas fa-broadcast-tower", title: "Synapse Hub", desc: "Real-time interactive neuro-learning environment." },
+                        { icon: "fas fa-layer-group", title: "Architect Roadmap", desc: "Precision-engineered curriculum for technical dominance." },
+                        { icon: "fas fa-users-viewfinder", title: "Global Nexus", desc: "Ultra-high value network of industry commanders." },
+                        { icon: "fas fa-microchip", title: "Forge Projects", desc: "Industrial-grade project deployment with 24/7 support." },
+                        { icon: "fas fa-vial-circle-check", title: "Stress Labs", desc: "High-pressure technical assessment & simulation." },
+                        { icon: "fas fa-award", title: "Verified Elite", desc: "Globally accredited credentials for the top 1%." }
+                    ].map((item, index) => (
+                        <div key={index} className="quantum-card-wrapper scroll-reveal" style={{ transitionDelay: `${index * 0.1}s` }}>
+                            <div className="quantum-card">
+                                <div className="card-top-bar">
+                                    <div className="bar-dots"><span></span><span></span><span></span></div>
+                                    <span className="cid">UID: 0x0{index + 1}</span>
+                                </div>
+                                <div className="card-body-v4">
+                                    <div className="icon-quantum-wrap">
+                                        <i className={item.icon}></i>
+                                        <div className="icon-ripple"></div>
+                                    </div>
+                                    <h3>{item.title}</h3>
+                                    <p>{item.desc}</p>
+                                </div>
+                                <div className="card-footer-v4">
+                                    <div className="footer-line"></div>
+                                    <span className="status">OPERATIONAL</span>
+                                </div>
 
-                <div className="adv-grid">
-                    <div className="adv-card">
-                        <div className="adv-icon-wrap">
-                            <i className="fas fa-broadcast-tower"></i>
+                                <div className="quantum-glare"></div>
+                            </div>
                         </div>
-                        <h3>Live Interactive Learning</h3>
-                        <p>Engage in real-time with veteran mentors. Clear your doubts instantly and participate in collaborative discussions that simulate real-world workspace dynamics.</p>
-                        <div className="adv-card-shine"></div>
-                    </div>
-
-                    <div className="adv-card">
-                        <div className="adv-icon-wrap">
-                            <i className="fas fa-layer-group"></i>
-                        </div>
-                        <h3>IIT-Inspired Curriculum</h3>
-                        <p>Follow a meticulously structured roadmap designed by top professionals. Each module is optimized for depth and clarity, ensuring mastery over every technical nuance.</p>
-                        <div className="adv-card-shine"></div>
-                    </div>
-
-                    <div className="adv-card">
-                        <div className="adv-icon-wrap">
-                            <i className="fas fa-users-viewfinder"></i>
-                        </div>
-                        <h3>Elite Alumni Network</h3>
-                        <p>Gain access to a powerful ecosystem of successful graduates, mentors, and industry experts. Networking that opens doors to exclusive career opportunities and partnerships.</p>
-                        <div className="adv-card-shine"></div>
-                    </div>
-
-                    <div className="adv-card">
-                        <div className="adv-icon-wrap">
-                            <i className="fas fa-microchip"></i>
-                        </div>
-                        <h3>Practical Project Mastery</h3>
-                        <p>Move beyond theory with 8+ high-impact live projects. Build a portfolio that commands attention, featuring real-world applications and industry-standard practices.</p>
-                        <div className="adv-card-shine"></div>
-                    </div>
-
-                    <div className="adv-card">
-                        <div className="adv-icon-wrap">
-                            <i className="fas fa-vial-circle-check"></i>
-                        </div>
-                        <h3>Technical Assessment Lab</h3>
-                        <p>Validate your skills with rigorous quizzes, live coding challenges, and mock technical interviews. Receive detailed feedback that sharpens your competitive edge.</p>
-                        <div className="adv-card-shine"></div>
-                    </div>
-
-                    <div className="adv-card">
-                        <div className="adv-icon-wrap">
-                            <i className="fas fa-award"></i>
-                        </div>
-                        <h3>Global Certification</h3>
-                        <p>Earn industry-recognized credentials that validate your expertise. Our certifications are respected by top MNCs and serve as a powerful testament to your professional capabilities.</p>
-                        <div className="adv-card-shine"></div>
-                    </div>
+                    ))}
                 </div>
             </section>
 
@@ -339,7 +335,7 @@ const CourseDetail = () => {
                     {(course.highlights || [
                         { title: "Worldwide Placements", icon: "https://cdn-icons-png.flaticon.com/512/2640/2640822.png" },
                         { title: "80% Practical Training", icon: "https://cdn-icons-png.flaticon.com/512/3233/3233514.png" },
-                        { title: "Global Certifications", icon: "https://cdn.simpleicons.org/coursera/0056D2" },
+                        { title: "Global Certifications", icon: "https://cdn.simpleicons.org/coursera" },
                         { title: "Integrated Internship", icon: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png" },
                         { title: "Personalised Career Coach", icon: "https://cdn-icons-png.flaticon.com/512/10547/10547540.png" },
                         { title: "Instant Doubt Solving", icon: "https://cdn-icons-png.flaticon.com/512/9408/9408175.png" },
@@ -390,10 +386,15 @@ const CourseDetail = () => {
                 </div>
                 <div className="cert-container">
                     <div className="cert-text">
-                        <h3>Master Certification in {course.title}</h3>
+                        <h3>
+                            {activeCert === 'gyantrix' && `Master Certification in ${course.title}`}
+                            {activeCert === 'intern' && "Internship Certification in Cloud and AI"}
+                            {activeCert === 'module' && "Earn Module-Wise Certifications on Your Path to Mastery"}
+                        </h3>
                         <p>
-                            Receive the {course.title} Certification validating your end-to-end development capabilities.
-                            Earn progress badges and demonstrate your expertise to potential employers.
+                            {activeCert === 'gyantrix' && `Receive the ${course.title} Certification validating your end-to-end development capabilities. Earn progress badges and demonstrate your expertise to potential employers.`}
+                            {activeCert === 'intern' && "Gain real-world experience through an industry-recognized internship, validating your hands-on skills and expertise in cloud computing and artificial intelligence."}
+                            {activeCert === 'module' && "Earn a recognized certificate after completing each module, showcasing your progress and skill mastery step by step throughout the program."}
                         </p>
                         <Link to="/contact" className="cert-btn-cta">
                             <span>Inquire Now →</span>
@@ -401,7 +402,15 @@ const CourseDetail = () => {
                         </Link>
                     </div>
                     <div className="cert-image">
-                        <img src="https://images.besttemplates.com/3698/Custom-made-Certificate-Design-for-Completion-of-Course.jpg" alt="Certificate Sample" />
+                        {activeCert === 'gyantrix' && (
+                            <img src={getAssetUrl('/assets/gyantrixCertification.jpeg')} alt="Gyantrix Certificate" />
+                        )}
+                        {activeCert === 'intern' && (
+                            <img src={getAssetUrl('/assets/internshipCertification.jpeg')} alt="Internship Certificate" />
+                        )}
+                        {activeCert === 'module' && (
+                            <img src={getAssetUrl('/assets/moduleWiseCertification.jpeg')} alt="Module Certificate" />
+                        )}
                     </div>
                 </div>
             </section>

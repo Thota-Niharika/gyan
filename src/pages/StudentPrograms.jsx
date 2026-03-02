@@ -1,37 +1,21 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getAssetUrl } from '../utils/assets';
+import { coursesData } from '../data/courses';
 import './StudentPrograms.css';
 
 const StudentPrograms = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const activeCategory = searchParams.get('type') || 'popular';
+    const [searchTerm, setSearchTerm] = useState('');
 
     const categories = [
         { id: 'popular', label: 'All Programs' },
-        { id: 'btech', label: 'B.Tech' },
-        { id: 'pharma', label: 'Pharmacy' },
-        { id: 'degree', label: 'Degree' },
-        { id: 'mba', label: 'MBA' },
-        { id: 'mca', label: 'MCA' },
+        { id: 'it', label: 'Tech & AI' },
+        { id: 'pharma', label: 'Life Sciences' },
+        { id: 'management', label: 'Management' },
+        { id: 'non-it-marketing', label: 'Business' },
         { id: 'agriculture', label: 'Agriculture' }
-    ];
-
-    const courses = [
-        { id: 'ai-data-analyst', img: '/images/AI.png', title: 'Artificial Intelligence & Data Analyst', description: 'Artificial Intelligence is the development of computer systems that can perform tasks requiring human-like intelligence.', price: '₹12,999', categories: ['mca', 'btech', 'degree', 'popular'], link: '/courses/artificialintelligence' },
-        { id: 'full-stack-dev', img: '/images/fullstackdev.png', title: 'Full Stack Development', description: 'Master both front-end and back-end skills to build complete, scalable web applications from scratch.', price: '₹9,999', categories: ['mca', 'btech', 'degree', 'popular'], link: '/courses/fullstack' },
-        { id: 'ds-analytics-ai', img: '/images/datascience.png', title: 'Data Science & Analytics With AI', description: 'Transform data into intelligence and insights through the power of Artificial Intelligence and Analytics.', price: '₹9,999', categories: ['mca', 'btech', 'degree', 'popular'], link: '/courses/ds-analytics-ai' },
-        { id: 'business-analyst-1', img: '/images/businessanalyst1.jpg', title: 'Business Analyst', description: 'A Business Analyst identifies business needs and recommends effective solutions.', price: '₹9,999', categories: ['degree', 'popular'], link: '/courses/businessanalyst' },
-        { id: 'data-analyst', img: '/images/dataanalyst.png', title: 'Data Analyst', description: 'A Data Analyst interprets and transforms data into actionable insights for decision-making.', price: '₹9,999', categories: ['btech', 'degree', 'popular'], link: '/courses/dataanalyst' },
-        { id: 'medical-coding', img: '/images/medicalcoding.jpg', title: 'Medical Coding', description: 'Medical Coding converts medical information into standard codes for documentation and billing.', price: '₹9,999', categories: ['pharma', 'btech', 'degree', 'popular'], link: '/courses/medicalCoding' },
-        { id: 'medical-scribing', img: '/images/medicalscribing.jpg', title: 'Medical Scribing', description: 'Medical Scribing involves documenting patient encounters and clinical information on behalf of healthcare providers.', price: '₹9,999', categories: ['pharma', 'btech', 'degree', 'popular'], link: '/courses/medicalscribing' },
-        { id: 'genetic-eng', img: '/images/geneticeng.jpg', title: 'Genetic Engineering', description: "Genetic Engineering involves modifying an organism's DNA to achieve desired traits or outcomes.", price: '₹9,999', categories: ['pharma', 'degree', 'popular'], link: '/courses/geneticeng' },
-        { id: 'pharmacovigilance', img: '/images/pharmaco-vigilance.jpg', title: 'Pharmacovigilance', description: 'Pharmacovigilance is the science of monitoring and ensuring the safety of medicines.', price: '₹9,999', categories: ['pharma', 'btech', 'degree', 'popular'], link: '/courses/pharmacovigilance' },
-        { id: 'digital-marketing', img: '/images/digitalmarketing1.png', title: 'Digital Marketing', description: 'Empower brands to reach, engage, and grow through data-driven digital marketing strategies.', price: '₹9,999', categories: ['mba', 'degree', 'popular'], link: '/courses/digitalmarketing' },
-        { id: 'product-management', img: '/images/productmanagement.jpg', title: 'Product Management', description: 'Product Management involves planning, developing, and overseeing a product to meet market needs and business goals.', price: '₹9,999', categories: ['degree', 'popular'], link: '/courses/productmanagement' },
-        { id: 'human-resources', img: '/images/humanresourse.jpg', title: 'Human Resources', description: 'Human Resources manages recruitment, employee relations, and workforce development within an organization.', price: '₹9,999', categories: ['mba', 'degree', 'popular'], link: '/courses/humanresourse' },
-        { id: 'nano-science', img: '/images/nanoscience&technology.jpg', title: 'Nano Science & Technology', description: 'Nano Science & Technology studies and manipulates materials at the atomic and molecular scale for advanced applications.', price: '₹9,999', categories: ['agriculture', 'degree', 'popular'], link: '/courses/nanoscience' },
-        { id: 'genetic-eng-agri', img: '/images/geneticeng.jpg', title: 'Genetic Engineering (Agriculture)', description: 'Genetic Engineering is the science of altering an organism\'s genes to achieve specific traits or outcomes.', price: '₹9,999', categories: ['agriculture', 'degree', 'popular'], link: '/courses/geneticeng' }
     ];
 
     const setActiveCategory = (id) => {
@@ -42,47 +26,135 @@ const StudentPrograms = () => {
         }
     };
 
-    const filteredCourses = activeCategory === 'popular'
-        ? courses
-        : courses.filter(course => course.categories.includes(activeCategory));
+    const filteredCourses = useMemo(() => {
+        return coursesData.filter(course => {
+            const matchesCategory = activeCategory === 'popular' || course.category.includes(activeCategory);
+            const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase());
+            return matchesCategory && matchesSearch;
+        });
+    }, [activeCategory, searchTerm]);
 
     return (
-        <section className="programs-section">
-            <h2>Perfect Programs <span>For You To Explore</span></h2>
+        <section className="catalog-masterclass">
+            <div className="glow-orb-premium top-left"></div>
+            <div className="glow-orb-premium bottom-right"></div>
 
-            <div className="program-tabs">
+            <div className="catalog-header">
+                <div className="header-meta">
+                    <div className="pulse-dot"></div>
+                    <span>Admissions Open 2026</span>
+                </div>
+                <h2>Forge Your Path with <span>Expert Curated Programs</span></h2>
+                <p>Lean from industry leaders and gain career-defining certifications.</p>
+
+                {/* Enhanced Search System */}
+                <div className="search-bench">
+                    <div className="search-input-wrap">
+                        <i className="fas fa-search search-icon"></i>
+                        <input
+                            type="text"
+                            placeholder="Find your future career (e.g. AI, Full Stack...)"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        {searchTerm && (
+                            <button className="clear-search" onClick={() => setSearchTerm('')}>
+                                <i className="fas fa-times"></i>
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            <nav className="catalog-nav">
                 {categories.map(category => (
                     <button
                         key={category.id}
-                        className={`filter-btn ${activeCategory === category.id ? 'active' : ''}`}
+                        className={`nav-item ${activeCategory === category.id ? 'is-active' : ''}`}
                         onClick={() => setActiveCategory(category.id)}
                     >
-                        <span>{category.label}</span>
-                        <div className="liquid"></div>
+                        {category.label}
+                        <div className="nav-underline"></div>
                     </button>
                 ))}
+            </nav>
+
+            <div className="program-grid-immersive">
+                {filteredCourses.length > 0 ? (
+                    filteredCourses.map((course, index) => (
+                        <div key={course.title} className="program-node">
+                            <div className="node-content">
+                                <div className="visual-container">
+                                    <img src={getAssetUrl(course.img)} alt={course.title} />
+                                    <div className="glass-stats">
+                                        <div className="g-stat">
+                                            <i className="fas fa-clock"></i>
+                                            <span>{course.duration || '6 Months'}</span>
+                                        </div>
+                                        <div className="g-stat">
+                                            <i className="fas fa-signal"></i>
+                                            <span>{course.level || 'Intermediate'}</span>
+                                        </div>
+                                    </div>
+                                    {course.isTrending2026 && <div className="trending-pill">Trending 2026</div>}
+                                </div>
+
+                                <div className="info-container">
+                                    <div className="info-header">
+                                        <div className="rating-pill">
+                                            <i className="fas fa-star"></i>
+                                            <span>4.5</span>
+                                        </div>
+                                        <span className="course-id">#{course.category?.split(' ')[0].toUpperCase() || 'P'}</span>
+                                    </div>
+
+                                    <h3>{course.title}</h3>
+                                    <p className="excerpt">{course.desc}</p>
+
+                                    <div className="skills-tags">
+                                        <span className="skill-tag">{course.studentCount || '10k+'} Students</span>
+                                        <span className="skill-tag">Job Portal Access</span>
+                                        <span className="skill-tag">Mentorship</span>
+                                    </div>
+
+                                    <div className="financial-footer">
+                                        <div className="price-tag-wrap">
+                                            <span className="p-label">Starting at</span>
+                                            <div className="p-main">
+                                                <span className="symbol">₹</span>
+                                                <span className="val">{course.price.replace(/[^0-9]/g, '')}</span>
+                                                <span className="ext">/-</span>
+                                            </div>
+                                        </div>
+
+                                        <div className="button-group-modern">
+                                            <Link to={course.link} className="btn-icon">
+                                                <i className="fas fa-external-link-alt"></i>
+                                            </Link>
+                                            <Link to="/contact" className="btn-main-enroll">
+                                                <span>Secure Seat</span>
+                                                <i className="fas fa-bolt"></i>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <div className="no-results">
+                        <i className="fas fa-search"></i>
+                        <h3>No programs matched your request</h3>
+                        <p>Try searching for a different keyword or category.</p>
+                        <button onClick={() => { setSearchTerm(''); setActiveCategory('popular'); }} className="btn-main-enroll">
+                            Reset Filters
+                        </button>
+                    </div>
+                )}
             </div>
 
-            <div className="courses-container">
-                {filteredCourses.map(course => (
-                    <div key={course.id} className="course-card">
-                        <img src={getAssetUrl(course.img)} alt={course.title} />
-                        <h3>{course.title}</h3>
-                        <p>{course.description}</p>
-                        <span>{course.price}</span>
-
-                        <div className="card-buttons">
-                            <Link to={course.link} className="know-more-btn btn">
-                                <span>Know More</span>
-                                <div className="liquid"></div>
-                            </Link>
-                            <Link to="/contact" className="payment-btn btn">
-                                <span>Enroll</span>
-                                <div className="liquid"></div>
-                            </Link>
-                        </div>
-                    </div>
-                ))}
+            <div className="catalog-footer">
+                <p>Not sure which program to pick? <Link to="/contact">Talk to a Career Counselor →</Link></p>
             </div>
         </section>
     );

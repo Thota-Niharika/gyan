@@ -38,10 +38,8 @@
 }
 
 .search-input {
-    position: relative;
-    top: 1.5rem;
     width: 100%;
-    padding: 1.5rem 1rem;
+    padding: 0 1rem;
     padding-right: 40px;
     border: 1px solid #777;
     border-radius: 0.7rem;
@@ -49,12 +47,13 @@
     outline: none;
     height: 48px;
     color: #0c0c0c;
+    margin-top: 1rem;
 }
 
 .search-icon {
     position: absolute;
     right: 15px;
-    top: 100%;
+    top: calc(50% + 0.5rem);
     transform: translateY(-50%);
     color: #0d0d0d;
     pointer-events: none;
@@ -62,9 +61,6 @@
 }
 
 .category-select {
-    position: relative;
-    top: 1.5rem;
-    left: 9rem;
     flex: 0.8;
     min-width: 20rem;
     padding: 0 15px;
@@ -76,6 +72,7 @@
     cursor: pointer;
     height: 48px;
     color: #333;
+    margin-top: 1rem;
 }
 
 .search-btn-group {
@@ -86,9 +83,6 @@
 }
 
 .search-btn {
-    position: relative;
-    right: -15rem;
-    top: 1.5rem;
     padding: 0 2rem;
     height: 48px;
     background-color: #305caf;
@@ -102,6 +96,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .search-btn:hover {
@@ -111,9 +106,6 @@
 }
 
 .reset-btn {
-    position: relative;
-    top: 1.5rem;
-    right: -15.5rem;
     padding: 0 2rem;
     height: 48px;
     background-color: transparent;
@@ -127,6 +119,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .reset-btn:hover {
@@ -155,16 +148,12 @@
 }
 
 .results-count-main {
-    position: relative;
-    top: 3rem;
     font-size: 1.1rem;
     font-weight: 700;
     color: #1e3c72;
 }
 
 .showing-text {
-    position: relative;
-    left: -28rem;
     font-size: 1.3rem;
     color: #171616;
 }
@@ -208,9 +197,6 @@
 }
 
 .sort-select {
-    position: relative;
-    top: 3rem;
-    left: 50rem;
     padding: 0 1rem;
     height: 48px;
     border: 1px solid #777;
@@ -331,9 +317,6 @@
 
 /* Pagination Bottom */
 .pagination-bottom-wrapper {
-    position: relative;
-    top: -3rem;
-    left: 28rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -350,7 +333,6 @@
 
 /* Upskill CTA Styles */
 .upskill-cta-section {
-    margin-top: -4em;
     padding: 1.5rem 0;
     background-color: #f8faff;
     border-radius: 30px;
@@ -468,27 +450,56 @@
         align-items: stretch;
     }
 
+    .search-input-wrapper {
+        min-width: unset;
+    }
+
+    .category-select {
+        min-width: unset;
+        width: 100%;
+        left: 0;
+    }
+
     .search-btn-group {
         flex-direction: column;
+        justify-content: stretch;
+        width: 100%;
     }
 
     .results-header {
         flex-direction: column;
         gap: 1.5rem;
-        align-items: flex-start;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .pagination-info-left {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .header-right {
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .sort-select {
+        width: 100%;
+        min-width: unset;
     }
 
     .pagination-top {
         overflow-x: auto;
         width: 100%;
         padding-bottom: 0.5rem;
+    }
+
+    .pagination-bottom-wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
     }
 
     .upskill-text-wrapper h1 {
