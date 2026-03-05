@@ -45,7 +45,16 @@
 
 .footer-logo {
     width: 200px;
-    margin-bottom: 1.5rem;
+    padding: 0;
+    margin-top: -1rem;
+    margin-bottom: -2.5rem !important;
+}
+
+.footer-brand-description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #bdc3c7;
+    margin-bottom: 1.2rem;
 }
 
 .social-icons {
@@ -120,6 +129,17 @@
 @media (max-width: 768px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
+        gap: 2.5rem 1.5rem;
+    }
+
+    .footer-section.address {
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+    }
+
+    .footer-brand-description {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
     }
 
     .footer-sec1-container {
@@ -129,6 +149,12 @@
 
 @media (max-width: 480px) {
     .footer-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        /* Keep 2 columns as requested */
+    }
+
+    .footer-brand-description {
+        font-size: 0.8rem;
+        line-height: 1.5;
     }
 }

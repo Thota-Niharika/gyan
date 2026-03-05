@@ -492,25 +492,14 @@ const Home = () => {
                 <div className="testimonials-grid">
                     <div className="slider row1">
                         <div className="track">
-                            {[
+                            {Array(4).fill([
                                 { p: "Gyantrix transformed the way I think about learning. The mentors not only teach — they guide, motivate, and prepare you for real-world challenges.", name: "Rakesh Choudhary" },
                                 { p: "The Data Science program at Gyantrix helped me gain job-ready skills and land my first internship in less than three months. Highly recommended!", name: "Ananya Gupta" },
                                 { p: "The training here is industry-focused. Every concept is taught with practical use cases, making me feel ready for any professional challenge.", name: "Karthik Goud" },
                                 { p: "I enrolled in the Full Stack program, and it completely changed my career path. The support team was with me from day one to placement day.", name: "Swati Nair" },
                                 { p: "From resume building to interview preparation — Gyantrix covers it all. I’m now working with one of the top MNCs, and it all started here.", name: "Amit Malhotra" }
-                            ].map((t, i) => (
+                            ]).flat().map((t, i) => (
                                 <div key={i} className="crd">
-                                    <p>{t.p}</p>
-                                    <div className="stars">★★★★★</div>
-                                    <h4>— {t.name}</h4>
-                                </div>
-                            ))}
-                            {/* Duplicate for loop */}
-                            {[
-                                { p: "Gyantrix transformed the way I think about learning. The mentors not only teach — they guide, motivate, and prepare you for real-world challenges.", name: "Rakesh Choudhary" },
-                                { p: "The Data Science program at Gyantrix helped me gain job-ready skills and land my first internship in less than three months. Highly recommended!", name: "Ananya Gupta" }
-                            ].map((t, i) => (
-                                <div key={`dup-${i}`} className="crd">
                                     <p>{t.p}</p>
                                     <div className="stars">★★★★★</div>
                                     <h4>— {t.name}</h4>
@@ -520,13 +509,13 @@ const Home = () => {
                     </div>
                     <div className="slider row2">
                         <div className="track">
-                            {[
+                            {Array(4).fill([
                                 { p: "From resume building to interview preparation — Gyantrix covers it all. I’m now working with one of the top MNCs, and it all started here.", name: "Amit Malhotra" },
                                 { p: "I enrolled in the Full Stack program, and it completely changed my career path. The support team was with me from day one to placement day.", name: "Swati Nair" },
                                 { p: "The training here is industry-focused. Every concept is taught with practical use cases, making me feel ready for any professional challenge.", name: "Karthik Goud" },
                                 { p: "The Data Science program at Gyantrix helped me gain job-ready skills and land my first internship in less than three months. Highly recommended!", name: "Ananya Gupta" },
                                 { p: "Gyantrix transformed the way I think about learning. The mentors not only teach — they guide, motivate, and prepare you for real-world challenges.", name: "Rakesh Choudhary" }
-                            ].map((t, i) => (
+                            ]).flat().map((t, i) => (
                                 <div key={i} className="crd">
                                     <p>{t.p}</p>
                                     <div className="stars">★★★★★</div>
@@ -538,9 +527,10 @@ const Home = () => {
                 </div>
                 <h3 className="feature-title">Featured In</h3>
                 <div className="feature-logos">
-                    {['thehindunewspaper.png', 'TV5.jpg', 'hmtv.png', 'eenadu.jpg', 'v6.jpeg', 'hansindia.jpg', 'andhrajyothy.png', 'adhabhyd.png', 'dailyhunt.jpeg', 'lokal.jpg', 'teluguprabha.jpeg', 'manatg.jpeg', 'tnews.jpg', 'metroudayam.jpeg', 'TheDaily.jpeg'].map(img => (
-                        <img key={img} src={getAssetUrl(`/images/${img}`)} alt={img} />
-                    ))}
+                    {Array(4).fill(['thehindunewspaper.png', 'TV5.jpg', 'hmtv.png', 'eenadu.jpg', 'v6.jpeg', 'hansindia.jpg', 'andhrajyothy.png', 'adhabhyd.png', 'dailyhunt.jpeg', 'lokal.jpg', 'teluguprabha.jpeg', 'manatg.jpeg', 'tnews.jpg', 'metroudayam.jpeg', 'TheDaily.jpeg']).flat()
+                        .map((img, idx) => (
+                            <img key={`${img}-${idx}`} src={getAssetUrl(`/images/${img}`)} alt={img} />
+                        ))}
                 </div>
             </section>
 

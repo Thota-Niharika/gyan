@@ -4418,9 +4418,16 @@ form button {
   overflow: hidden;
 }
 
+/* Responsive */
+@media (max-width: 1024px) {
+  .testimonials {
+    padding: 40px 6%;
+  }
+}
+
 @media (max-width: 768px) {
   .testimonials {
-    padding: 30px 5%;
+    padding: 30px 4%;
   }
 }
 
@@ -4446,19 +4453,28 @@ form button {
 
 .track {
   display: flex;
+  flex-wrap: nowrap;
+  /* Prevent items from jumping to next line */
   width: max-content;
-  gap: 25px;
+  will-change: transform;
+  /* Hint to browser for hardware acceleration */
+  /* Removed gap to fix horizontal loop jumping */
 }
 
 /* Equal-sized Cards */
 .crd {
   flex: 0 0 auto;
-  width: 280px;
-  height: 260px;
+  width: 320px;
+  /* Slightly wider for better text flow */
+  margin-right: 30px;
+  height: 220px;
+  /* Increased base height */
   background: #f9f9f9;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  /* More modern rounding */
+  padding: 2rem;
+  /* More generous padding */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -4467,11 +4483,16 @@ form button {
 }
 
 .crd p {
-  font-size: 14px;
-  line-height: 1.4;
-  height: 100px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  height: 120px;
+  /* Increased from 100px */
   overflow: hidden;
-  text-align: justify;
+  text-overflow: ellipsis;
+  /* Add ellipsis if it still overflows */
+  text-align: left;
+  /* Changed from justify to prevent weird spacing */
+  color: #4b5563;
 }
 
 .crd:hover {
@@ -4488,11 +4509,18 @@ form button {
 
 /* Continuous Scroll Animations */
 .row1 .track {
-  animation: scroll-left 35s linear infinite;
+  animation: scroll-left 15s linear infinite;
+  /* Matched to 15s as per your recent update */
 }
 
 .row2 .track {
-  animation: scroll-right 35s linear infinite;
+  animation: scroll-right 15s linear infinite;
+  /* Matched to 15s */
+}
+
+.track:hover {
+  animation-play-state: running !important;
+  /* Forces it to NEVER stop even on hover */
 }
 
 /* Opposite directions */
@@ -4517,14 +4545,38 @@ form button {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .crd {
-    width: 240px;
-    height: 240px;
+    width: 300px;
+    height: 340px;
+    padding: 2rem;
   }
 
   .crd p {
-    height: 110px;
+    height: 160px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow: visible;
+    text-align: left;
+    color: #4b5563;
+  }
+}
+
+@media (max-width: 768px) {
+  .crd {
+    width: 280px;
+    height: 250px;
+    padding: 1.8rem;
+    margin-right: 25px;
+  }
+
+  .crd p {
+    height: 200px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    overflow: visible;
+    text-align: left;
+    color: #4b5563;
   }
 }
 
@@ -4553,20 +4605,29 @@ form button {
 
 .feature-logos {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: nowrap;
+  /* Prevent wrapping */
+  justify-content: flex-start;
   align-items: center;
-  gap: 2rem;
-  animation: scrollLeft 20s linear infinite;
+  width: max-content;
+  will-change: transform;
+  animation: scrollLeft 15s linear infinite;
 }
 
 .feature-logos img {
-  width: 9rem;
-  height: 5rem;
+  width: 10rem;
+  /* Slightly larger */
+  height: 6rem;
+  /* Slightly larger */
   object-fit: contain;
   background: #fff;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  /* Increased padding for better visibility */
+  flex: 0 0 10rem;
+  margin-right: 2.5rem;
+  /* Adjusted margin */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
 }
 
@@ -4581,7 +4642,7 @@ form button {
   }
 
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
@@ -4872,6 +4933,8 @@ form button {
 .form-card-premium {
   flex: 1;
   max-width: 580px;
+  height: fit-content;
+  align-self: center;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -5007,7 +5070,7 @@ form button {
   }
 
   .input-group-grid {
-    gap: 1rem;
+    gap: 0.75rem;
     margin-bottom: 0.6rem;
   }
 
@@ -6046,21 +6109,22 @@ body {
 ----------------------------------------------- */
 @media (max-width: 768px) {
   .testimonials {
-    padding: 2rem 4%;
-    overflow: hidden;
+    padding: 2.5rem 4%;
+    overflow: visible;
+    /* Changed to visible to allow card hover scales */
   }
 
   .feature-logos {
-    overflow: hidden;
-    flex-wrap: nowrap;
-    gap: 1rem;
-    justify-content: flex-start;
-    animation-duration: 30s;
+    width: max-content;
+    /* Ensure track doesn't shrink */
+    animation: scrollLeft 15s linear infinite;
   }
 
   .feature-logos img {
-    width: 6rem;
-    height: 3.5rem;
+    margin-right: 1.5rem;
+    padding: 0.8rem;
+    width: 7rem;
+    height: 4.5rem;
   }
 }
 

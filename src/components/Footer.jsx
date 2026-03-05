@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
-import footerLogo from '../assets/gyan1.png';
+import footerLogo from '../assets/gynFooter_png.png';
 
 const Footer = () => {
     return (
@@ -12,6 +12,9 @@ const Footer = () => {
                     {/* ADDRESS */}
                     <div className="footer-section address">
                         <Link to="/"><img src={footerLogo} alt="Gyantrix Academy Logo" className="footer-logo" /></Link>
+                        <p className="footer-brand-description">
+                            Empowering future tech leaders by bridging the gap between academic excellence and global industry mastery.
+                        </p>
                         <h3>Follow Us</h3>
                         <div className="social-icons">
                             <a href="https://www.facebook.com/photo/?fbid=122101027089065794&set=a.122101027125065794" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
