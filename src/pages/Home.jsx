@@ -77,6 +77,20 @@ const Home = () => {
                                 <p>Digital Marketing</p>
                                 <p>Human Resources</p>
                                 <p>Nano Science & Technology</p>
+                                {/* Duplicate for seamless scroll */}
+                                <p>Artificial Intelligence</p>
+                                <p>Full Stack Developer</p>
+                                <p>Data Analyst</p>
+                                <p>Data Science</p>
+                                <p>Business Analyst</p>
+                                <p>Medical Coding</p>
+                                <p>Medical Scribing</p>
+                                <p>Genetic Engineering</p>
+                                <p>Pharmacovigilance</p>
+                                <p>Product Management</p>
+                                <p>Digital Marketing</p>
+                                <p>Human Resources</p>
+                                <p>Nano Science & Technology</p>
                             </div>
                         </div>
                     </div>
@@ -173,6 +187,8 @@ const Home = () => {
 
             {/* Premium Interactive Stepper Section */}
             <section className="offer-stepper">
+                <div className="bg-glow-orb-1"></div>
+                <div className="bg-glow-orb-2"></div>
                 <div className="container">
                     <div className="stepper-header">
                         <span className="badge">Why Choose Gyantrix?</span>
@@ -231,28 +247,34 @@ const Home = () => {
                         {/* Desktop Showcase (Side-by-side) */}
                         <div className="stepper-showcase desktop-only">
                             {offers[activeOffer] && (
-                                <div className="showcase-content" key={activeOffer}>
-                                    <div className="showcase-info">
-                                        <span className="showcase-tag">Features Overview</span>
-                                        <h1>{offers[activeOffer].title}</h1>
-                                        <p>{offers[activeOffer].description}</p>
-                                        <div className="feature-tags">
-                                            {offers[activeOffer].features.map((feat, i) => (
-                                                <span key={i} className="feat-tag">
-                                                    <i className="fas fa-check-circle"></i> {feat}
-                                                </span>
-                                            ))}
+                                <div className="showcase-card-inner" key={activeOffer}>
+                                    <div className="showcase-top-row">
+                                        <div className="showcase-info">
+                                            <span className="showcase-tag">Features Overview</span>
+                                            <h1>{offers[activeOffer].title}</h1>
+                                            <p>{offers[activeOffer].description}</p>
                                         </div>
+                                        <div className="showcase-visual">
+                                            <div className="floating-sphere"></div>
+                                            <div className="icon-large">
+                                                <i className={offers[activeOffer].icon}></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="feature-tags-row">
+                                        {offers[activeOffer].features.map((feat, i) => (
+                                            <div key={i} className="feat-tag">
+                                                <i className="fas fa-check-circle"></i> {feat}
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="showcase-footer">
                                         <Link to="/courses" className="btn showcase-btn">
                                             <span>Explore Programs</span>
                                             <div className="liquid"></div>
                                         </Link>
-                                    </div>
-                                    <div className="showcase-visual">
-                                        <div className="floating-sphere"></div>
-                                        <div className="icon-large">
-                                            <i className={offers[activeOffer].icon}></i>
-                                        </div>
                                     </div>
                                 </div>
                             )}

@@ -64,7 +64,7 @@ const StudentPrograms = () => {
                         <i className="fas fa-search search-icon"></i>
                         <input
                             type="text"
-                            placeholder="Find your future career (e.g. AI, Full Stack...)"
+                            placeholder="Find your future career"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />

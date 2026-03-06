@@ -1,123 +1,86 @@
-import React from 'react';
+import React from "react";
 import './Policies.css';
 
-const Refund = () => {
+const RefundPolicy = () => {
     return (
         <div className="policy-page">
             <div className="policy-container">
-                <h1 className="policy-title">Refund and Cancellation Policy – Gyantrix Academy</h1>
-                <div className="policy-meta">
-                    <p><strong>Effective Date:</strong> September 20, 2025</p>
-                    <p><strong>Last Updated:</strong> September 20, 2025</p>
-                </div>
+                <h1 className="policy-title">Refund Policy – Gyantrix</h1>
 
                 <div className="policy-section">
+                    <h2>Information Collection</h2>
                     <p>
-                        At <strong>Gyantrix Academy</strong>, we are dedicated to providing high-quality educational programs, professional training, and digital learning experiences. This Refund and Cancellation Policy ensures transparency and fairness while maintaining compliance with international educational service standards.
-                    </p>
-                    <p>
-                        By enrolling in any program or making a payment to Gyantrix Academy, you acknowledge and agree to the terms outlined below.
-                    </p>
-                </div>
-
-                <div className="policy-section">
-                    <h2>1. General Policy</h2>
-                    <ul>
-                        <li>All course enrollments, registration fees, and purchases—whether online or offline—are final and non-refundable.</li>
-                        <li>This applies to classroom programs, online training, workshops, webinars, digital content, and certification courses.</li>
-                        <li>Students should review course details and eligibility before making payments.</li>
-                    </ul>
-                </div>
-
-                <div className="policy-section">
-                    <h2>2. Transfer or Rescheduling Policy</h2>
-                    <ul>
-                        <li>Students may request a one-time transfer within 10 calendar days of enrollment by writing to <strong>support@gyantrixacademy.com</strong>.</li>
-                        <li>Transfers depend on seat availability and may include administrative fees.</li>
-                        <li>Requests after course commencement or after 10 days of payment will not be accepted.</li>
-                    </ul>
-                </div>
-
-                <div className="policy-section">
-                    <h2>3. Exceptional Refund Circumstances</h2>
-                    <ul>
-                        <li>Duplicate transaction or technical error resulting in multiple charges.</li>
-                        <li>Unauthorized or fraudulent transaction (with valid proof and verification).</li>
-                        <li>System failure from Gyantrix Academy’s end preventing access for over seven (7) consecutive days.</li>
-                    </ul>
-                    <p>
-                        Approved refunds will be processed within 15–30 business days via the original payment mode. Applicable deductions such as payment gateway fees and taxes will be subtracted.
+                        Gyantrix collects information in several ways. When you register for
+                        a course with us, we may request contact details such as your name,
+                        address, phone number, and email address, along with billing
+                        information. We may also collect additional details through forms or
+                        surveys regarding your academic background, profession, business,
+                        job role, and opinions. Any correspondence (letters, emails, or
+                        messages) sent to us by you or third parties may also be maintained
+                        in your student file.
                     </p>
                 </div>
 
                 <div className="policy-section">
-                    <h2>4. No Refund for Partially Used or Accessed Services</h2>
+                    <h2>Refund & Cancellation Policy</h2>
+                    <div className="policy-sub-section">
+                        <h3>Pre-Registration Amount (₹1,000/-)</h3>
+                        <p>Non-refundable under any circumstances.</p>
+                    </div>
+
+                    <div className="policy-sub-section">
+                        <h3>Full Fees</h3>
+                        <p>
+                            A refund request will be considered only before the commencement
+                            of the batch and must be submitted within 24 hours after
+                            pre-registration for which the student is registered. Refund
+                            applications must be addressed in writing to the Program
+                            Director.
+                        </p>
+                    </div>
+
+                    <p><strong>Important Note:</strong> Fees once paid are non-refundable under any other circumstances.</p>
+                </div>
+
+                <div className="policy-section">
+                    <h2>Payment Policy</h2>
                     <ul>
-                        <li>No refund once course materials are accessed or classes attended.</li>
-                        <li>No refund for change of mind, personal reasons, or dissatisfaction.</li>
-                        <li>Once credentials are issued or content accessed, transactions are final.</li>
+                        <li>Fees can be paid via Cheque, Demand Draft, ECS, Credit/Debit Card, UPI, Crypto, PayPal, Zest, Bajaj Fin, or GrayQuest.</li>
+                        <li>Cash payments are not accepted.</li>
+                        <li>Admission will be confirmed only upon receipt of the requisite fee.</li>
+                        <li>Students may choose between Lump Sum payment or Loan/Installment options through our authorized payment partners.</li>
+                        <li>In case of a study break due to unavoidable circumstances, students may request deferment by contacting their Student Success Manager (SSM).</li>
+                        <li><strong>Late Payment Penalty:</strong> A fee of ₹500/- will be charged per instance of delay.</li>
+                        <li>Non-payment or delay exceeding 15 days, or a bounced cheque, will lead to cancellation of admission at Gyantrix’s sole discretion without prior notice.</li>
+                        <li>All required documents and KYC must be submitted at the time of admission.</li>
                     </ul>
                 </div>
 
                 <div className="policy-section">
-                    <h2>5. Refund Request Process</h2>
-                    <ul>
-                        <li>Submit a written request to <strong>support@gyantrixacademy.com</strong> within 10 days of payment.</li>
-                        <li>Include payment reference, transaction details, and proof of issue.</li>
-                        <li>Requests after 10 days will not be considered.</li>
-                    </ul>
-                </div>
-
-                <div className="policy-section">
-                    <h2>6. Chargebacks and Payment Disputes</h2>
-                    <ul>
-                        <li>Contact the Academy before filing any chargeback with your bank.</li>
-                        <li>Unjustified chargebacks may result in suspension and recovery of related costs.</li>
-                    </ul>
-                </div>
-
-                <div className="policy-section">
-                    <h2>7. Course or Program Cancellation by Gyantrix Academy</h2>
-                    <ul>
-                        <li>Courses may be cancelled due to low enrollment, faculty unavailability, or force majeure.</li>
-                        <li>Students will be offered a full refund or free transfer to another batch.</li>
-                    </ul>
-                </div>
-
-                <div className="policy-section">
-                    <h2>8. Digital Products and Intellectual Property</h2>
-                    <ul>
-                        <li>All digital content is protected by copyright laws.</li>
-                        <li>Once accessed or downloaded, purchases are final and non-refundable.</li>
-                        <li>Access is personal and non-transferable.</li>
-                    </ul>
-                </div>
-
-                <div className="policy-section">
-                    <h2>9. Policy Updates and Modifications</h2>
+                    <h2>Price Changes</h2>
                     <p>
-                        Gyantrix Academy may update this policy anytime without prior notice. Revised versions take effect immediately upon publication on our website.
+                        Gyantrix reserves the right to modify, amend, or discontinue fees and
+                        features associated with its courses or services. Any changes will
+                        be communicated at least 15 days in advance. Continued usage of
+                        Gyantrix’s online or blended learning programs after notification
+                        will be deemed as acceptance of the revised terms. If you do not
+                        agree to the revised terms, you may cancel your subscription.
                     </p>
                 </div>
 
                 <div className="policy-section">
-                    <h2>10. Governing Law and Jurisdiction</h2>
+                    <h2>Taxes</h2>
                     <p>
-                        This policy is governed by Indian law. Disputes fall under the jurisdiction of courts in Hyderabad, India.
+                        All applicable taxes (including GST/VAT, where applicable) will be
+                        charged in addition to the course fee. Taxes are calculated based on
+                        the billing information you provide at the time of purchase. You
+                        agree to indemnify and hold Gyantrix harmless against any claims
+                        arising from underpayment of taxes, including penalties and interest.
                     </p>
-                </div>
-
-                <div className="policy-section policy-contact">
-                    <h2>11. Contact Information</h2>
-                    <p><strong>Gyantrix Academy</strong></p>
-                    <p>📧 Email: support@gyantrixacademy.com</p>
-                    <p>📞 Phone: +91 7386879818</p>
-                    <p>🏢 Address: Hyderabad, India</p>
-                    <p>🌐 Website: www.gyantrixacademy.com</p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Refund;
+export default RefundPolicy;

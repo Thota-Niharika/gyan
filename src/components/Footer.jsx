@@ -63,6 +63,7 @@ const Footer = () => {
                         <ul>
                             <li><Link to="/videolectures">Video Lectures</Link></li>
                             <li><Link to="/interview-questions">Interview Questions</Link></li>
+                            <li><Link to="/learn-hub">Learn Hub</Link></li>
                             <li><Link to="/blog">Blogs</Link></li>
                         </ul>
                     </div>

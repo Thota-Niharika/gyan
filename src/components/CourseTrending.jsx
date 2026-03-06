@@ -115,42 +115,44 @@ const CourseTrending = ({ initialCategory = null, showTitle = true }) => {
 
             <div className="trending-grid" ref={scrollRef} onScroll={handleScroll}>
                 {filteredCourses.map((course, index) => (
-                    <div key={index} className="trending-card">
-                        <div className="card-image-container">
-                            <img src={getAssetUrl(course.img)} alt={course.title} />
-                            <div className="card-overlay">
-                                <span className="curriculum-tag">
-                                    <i className="fas fa-layer-group"></i> {course.modules ? course.modules.length : '8+'} Modules
-                                </span>
+                    <Link key={index} to={course.link} className="trending-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <div className="trending-card">
+                            <div className="card-image-container">
+                                <img src={getAssetUrl(course.img)} alt={course.title} />
+                                <div className="card-overlay">
+                                    <span className="curriculum-tag">
+                                        <i className="fas fa-layer-group"></i> {course.modules ? course.modules.length : '8+'} Modules
+                                    </span>
+                                </div>
+                                {course.isTrending2026 && <div className="card-badge">Trending </div>}
                             </div>
-                            {course.isTrending2026 && <div className="card-badge">Trending </div>}
+
+                            <div className="card-body">
+                                <div className="card-meta">
+                                    <div className="duration-pill">
+                                        <i className="far fa-calendar-alt"></i> 6-12 Months
+                                    </div>
+                                    <div className="rating">
+                                        <span className="stars">★★★★★</span>
+                                        <span className="rating-text">4.5</span>
+                                    </div>
+                                </div>
+
+                                <h3>{course.title}</h3>
+
+                                <div className="card-footer">
+                                    <div className="price-tag">
+                                        <span className="price-label">Program Fee</span>
+                                        <span className="price-value">{course.price || "₹14,999"}</span>
+                                    </div>
+                                    <div className="btn-schedule btn">
+                                        <span>Learn More</span>
+                                        <div className="liquid"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div className="card-body">
-                            <div className="card-meta">
-                                <div className="duration-pill">
-                                    <i className="far fa-calendar-alt"></i> 6-12 Months
-                                </div>
-                                <div className="rating">
-                                    <span className="stars">★★★★★</span>
-                                    <span className="rating-text">4.5</span>
-                                </div>
-                            </div>
-
-                            <h3>{course.title}</h3>
-
-                            <div className="card-footer">
-                                <div className="price-tag">
-                                    <span className="price-label">Program Fee</span>
-                                    <span className="price-value">{course.price || "₹14,999"}</span>
-                                </div>
-                                <Link to={course.link} className="btn-schedule btn">
-                                    <span>Learn More</span>
-                                    <div className="liquid"></div>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

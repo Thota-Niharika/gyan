@@ -94,24 +94,24 @@ const FeaturesSection = () => {
         }
     };
 
+    // Auto-scroll to the top of the opened content on mobile/tablet
     React.useEffect(() => {
-        if (activeFeature) {
-            // Only auto-scroll on desktop — on mobile/tablet it causes the section to
-            // jump up and overlap the section above it
-            if (window.innerWidth > 1024) {
-                const currentRef = desktopContentRef.current;
-                if (currentRef) {
-                    setTimeout(() => {
-                        currentRef.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }, 150);
+        if (activeFeature && window.innerWidth <= 1024) {
+            // Small delay to allow the content to render and expand
+            setTimeout(() => {
+                if (contentRef.current) {
+                    const navbarHeight = 100; // Approximate navbar height
+                    const elementPosition = contentRef.current.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
-            }
+            }, 100);
         }
     }, [activeFeature]);
-
     return (
         <>
             <section className="featuress">
