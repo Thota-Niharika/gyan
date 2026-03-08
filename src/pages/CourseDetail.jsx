@@ -476,25 +476,12 @@ const CourseDetail = () => {
                 <div className="jrny-text">
                     <h2>Transform Your Career with Most Trusted Institute</h2>
                     <p>
-                        {course.category?.includes('it') ?
-                            "Step into the world of end-to-end development and innovation. At our institute, you don't just code — you craft complete digital solutions." :
-                            `Master the core principles of ${course.title} and drive innovation in your field. Our IIT-inspired curriculum ensures you're ready for elite professional roles.`
-                        }
+                        {course.programDescription || course.desc || `Master the core principles of ${course.title} and drive innovation in your field. Our industry-validated curriculum ensures you're ready for elite professional roles.`}
                     </p>
                     <ul>
-                        {course.category?.includes('it') ? (
-                            <>
-                                <li>Master front-end, back-end, and database technologies with real-world projects</li>
-                                <li>Gain expertise in modern frameworks and cloud deployment</li>
-                                <li>Build a strong developer portfolio and become industry-ready for top IT roles</li>
-                            </>
-                        ) : (
-                            <>
-                                <li>Gain specialized expertise with industry-validated curriculum</li>
-                                <li>Work on real-world case studies and industrial-grade projects</li>
-                                <li>Accelerate your career with 100% placement assistance and expert mentoring</li>
-                            </>
-                        )}
+                        <li>Master {course.title} concepts with real-world, hands-on projects</li>
+                        <li>Gain expertise in {course.tools && course.tools.length > 0 ? course.tools.map(t => t.name).slice(0, 3).join(', ') : 'modern tools and technologies'} and industry practices</li>
+                        <li>Accelerate your career with 100% placement assistance and expert mentoring</li>
                     </ul>
                     <Link to="/contact" className="contact-btn">
                         <span>Contact Us</span>

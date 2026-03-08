@@ -2354,6 +2354,9 @@
     gap: 16px;
     will-change: transform;
     min-height: max-content;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .col-1 {
@@ -2411,43 +2414,43 @@
 /* Scroll Animations */
 @keyframes scroll-up-placement {
     0% {
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateY(calc(-50% - 8px));
+        transform: translate3d(0, calc(-50% - 8px), 0);
         /* accounting for half the gap */
     }
 }
 
 @keyframes scroll-down-placement {
     0% {
-        transform: translateY(calc(-50% - 8px));
+        transform: translate3d(0, calc(-50% - 8px), 0);
     }
 
     100% {
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes scroll-left-placement {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(calc(-50% - 7px));
+        transform: translate3d(calc(-50% - 7px), 0, 0);
         /* accounting for gaps in mobile view */
     }
 }
 
 @keyframes scroll-right-placement {
     0% {
-        transform: translateX(calc(-50% - 7px));
+        transform: translate3d(calc(-50% - 7px), 0, 0);
     }
 
     100% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -2764,8 +2767,10 @@
     overflow: hidden;
     position: relative;
     padding: 1rem;
-    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-    background-size: 20px 20px;
+    background: #f8fafc;
+    /* Solid background instead of gradient to prevent repaint */
+    transform: translateZ(0);
+    /* Force hardware acc on container */
 }
 
 .reviews-marquee {
@@ -2773,9 +2778,7 @@
     flex-direction: column;
     gap: 1.5rem;
     animation: scroll-up-reviews 20s linear infinite;
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
+    /* Removed will-change and translate3d, relying on translateY to avoid z-index/sub-pixel composite clashing */
 }
 
 /* Pause scroll on hover */
@@ -2785,11 +2788,11 @@
 
 @keyframes scroll-up-reviews {
     0% {
-        transform: translate3d(0, 0, 0);
+        transform: translateY(0);
     }
 
     100% {
-        transform: translate3d(0, -50%, 0);
+        transform: translateY(-50%);
     }
 }
 
@@ -2805,18 +2808,10 @@
     align-self: flex-start;
     position: relative;
     margin-bottom: 0.5rem;
+    /* Removed will-change and transformZ to prevent layer explosion */
 }
 
-.review-chat-bubble::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -8px;
-    width: 0;
-    height: 0;
-    border-top: 10px solid #fff;
-    border-right: 10px solid transparent;
-}
+/* Removed pseudo element ::before on .review-chat-bubble which causes clipping/repainting */
 
 .bubble-header {
     display: flex;

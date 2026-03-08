@@ -270,6 +270,7 @@ export const coursesData = [
         price: "₹14,999",
         img: "/images/medicalScribingjpg.jpg",
         desc: "Medical Scribing involves documenting patient encounters and clinical information on behalf of healthcare providers in real-time.",
+        link: "/courses/medicalscribing",
         rating: 4.5,
         modules: [
             { title: 'Role of a Medical Scribe', tag: '#Intro', content: 'Understanding the importance of scribes in the modern healthcare ecosystem.' },
@@ -285,7 +286,7 @@ export const coursesData = [
         ],
         tools: [
             { name: 'Epic', img: 'https://img.icons8.com/color/48/hospital.png' },
-            { name: 'Cerner', img: 'https://img.icons8.com/color/48/medical-records.png' },
+            { name: 'Cerner', img: '/images/cerner.png' },
             { name: 'Dragon', img: 'https://img.icons8.com/color/48/microphone.png' }
         ],
         reviews: [
