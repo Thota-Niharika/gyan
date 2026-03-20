@@ -61,6 +61,23 @@ const CourseDetail = () => {
         // Reset states when course changes
         setActiveModule(0);
         setActiveFaq(null);
+
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => observer.observe(el));
+
+        return () => {
+            revealElements.forEach(el => observer.unobserve(el));
+            observer.disconnect();
+        };
     }, [course]);
 
     const toggleModule = (index) => {
@@ -224,25 +241,31 @@ const CourseDetail = () => {
                 <div className="banner-right">
                     <h2>Connect with Our Experts</h2>
                     <form className="syllabus-form">
-                        <label htmlFor="name">Name <span className="redstar">*</span></label>
-                        <input type="text" id="name" placeholder="Enter your full name" required />
+                        <div className="form-group">
+                            <label htmlFor="name">Name <span className="redstar">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+                        </div>
 
-                        <label htmlFor="email">Email <span className="redstar">*</span></label>
-                        <input type="email" id="email" placeholder="Enter your email address" required />
+                        <div className="form-group">
+                            <label htmlFor="email">Email <span className="redstar">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+                        </div>
 
-                        <label htmlFor="mobile">Mobile No <span className="redstar">*</span></label>
-                        <input type="tel" id="mobile" placeholder="Enter your mobile number" required />
+                        <div className="form-group">
+                            <label htmlFor="mobile">Mobile No <span className="redstar">*</span></label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required />
+                        </div>
 
-                        <label htmlFor="course">Course <span className="redstar">*</span></label>
-                        <select id="course" required defaultValue={course.title}>
-                            <option value={course.title}>{course.title}</option>
-                            {coursesData.filter(c => c.title !== course.title).map((c, i) => (
-                                <option key={i} value={c.title}>{c.title}</option>
-                            ))}
-                        </select>
+                        <div className="form-group">
+                            <label htmlFor="course-select">Course <span className="redstar">*</span></label>
+                            <select id="course-select" name="course" required>
+                                <option value="">Select a course</option>
+                                <option value={course.title}>{course.title}</option>
+                            </select>
+                        </div>
 
                         <button type="submit" className="download-btn">
-                            <span>Submit</span>
+                            <span>Submit Request</span>
                             <div className="liquid"></div>
                         </button>
                     </form>
