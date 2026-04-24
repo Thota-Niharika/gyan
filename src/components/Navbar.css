@@ -2,11 +2,13 @@
 .navbar nav {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
+
 }
 
 .navbar nav>* {
-    min-width: 90px;
+    min-width: auto;
+
     text-align: center;
 }
 
@@ -30,7 +32,8 @@
     padding: 0.1rem 3%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+
     position: fixed;
     width: 100%;
     height: auto;
@@ -116,7 +119,8 @@
 }
 
 .navbar nav a {
-    margin: 0 0.8rem;
+    margin: 0 0.5rem;
+
     color: #333;
     text-decoration: none;
     font-weight: 500;
@@ -129,6 +133,39 @@
     color: #e64520;
     transform: translateY(-2px);
 }
+
+/* === Highlight Button === */
+.nav-highlight-btn {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff !important;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    text-transform: none;
+
+    font-size: 0.85rem !important;
+    letter-spacing: 0.5px;
+    animation: nav-glow 3s infinite alternate;
+}
+
+.nav-highlight-btn:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(30, 60, 114, 0.5);
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+}
+
+@keyframes nav-glow {
+    from {
+        box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+    }
+    to {
+        box-shadow: 0 4px 25px rgba(102, 214, 255, 0.5);
+    }
+}
+
 
 /* === Dropdown === */
 .dropdown {
@@ -248,9 +285,12 @@
 .search-icon {
     position: absolute;
     left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #94a3b8;
     font-size: 0.9rem;
 }
+
 
 .nav-search-input {
     width: 100%;

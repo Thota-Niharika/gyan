@@ -22,8 +22,7 @@ const Contact = () => {
                         <h3>Central Office</h3>
                         <p className="address-text">
                             Gyantrix,<br />
-                            5th floor, cropwork.hub,<br />
-                            Plot No. 81, Jubilee Enclave,<br />
+                            Pathrika Nagar, Street No:1,<br />
                             HITEC City, Hyderabad – 500081
                         </p>
                         <div className="map-iframe-container">
@@ -78,7 +77,7 @@ const Contact = () => {
                             </div>
 
                             <button type="submit" className="submit-btn-premium">
-                                <span>Schedule Consultation</span>
+                                <span>Schedule Guidance</span>
                                 <div className="liquid"></div>
                             </button>
                         </form>

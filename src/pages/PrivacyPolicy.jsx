@@ -108,7 +108,7 @@ const PrivacyPolicy = () => {
                     <p><strong>Gyantrix Academy</strong></p>
                     <p>📧 Email: support@gyantrixacademy.com</p>
                     <p>📞 Phone: 7386879818</p>
-                    <p>🏢 Address: Hyderabad</p>
+                    <p>🏢 Address: Pathrika Nagar, Street No:1, HITEC City, Hyderabad – 500081</p>
                 </div>
 
                 <div className="policy-section">

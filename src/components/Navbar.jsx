@@ -153,6 +153,8 @@ const Navbar = () => {
                 </div>
 
                 <Link to="/contact" onClick={closeAll}>Contact us</Link>
+                <Link to="/career-launch" className="nav-highlight-btn" onClick={closeAll}>Career Launch</Link>
+
 {/* <Link to="/login" className="login-nav-btn" onClick={closeAll}>
                     <span>Login</span>
                     <div className="liquid"></div>

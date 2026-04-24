@@ -30,6 +30,8 @@ import PlacementCourses from './pages/PlacementCourses';
 // import TrendingCourses from './pages/TrendingCourses';
 import StudentPrograms from './pages/StudentPrograms';
 import LearnHub from './pages/LearnHub';
+import CareerLaunch from './pages/CareerLaunch';
+
 import SparkleBackground from './components/SparkleBackground';
 import CurtainEffect from './components/CurtainEffect';
 import ScrollToTop from './components/ScrollToTop';
@@ -81,6 +83,8 @@ function App() {
                     <Route path="certification" element={<Navigate to="/certification-form" replace />} />
                     <Route path="live-events" element={<Navigate to="/liveevents-form" replace />} />
                     <Route path="answer-form" element={<Navigate to="/guidance-form" replace />} />
+                    <Route path="career-launch" element={<CareerLaunch />} />
+
                     <Route path="learn-hub" element={<LearnHub />} />
                     <Route path="index.html" element={<Navigate to="/" replace />} />
                     <Route path="events.html" element={<Navigate to="/" replace />} />
